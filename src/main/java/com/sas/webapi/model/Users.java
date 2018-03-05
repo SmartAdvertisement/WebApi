@@ -7,17 +7,36 @@ import java.util.Date;
 
 
 @Entity
+@Table(name="users")
 public class Users {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
+    @Column(name="userID")
+    private Integer id;
+
+    @Column(name="name")
     private String name;
+
+    @Column(name="surname")
     private String surname;
+
+    @Column(name="username")
     private String username;
+
+    @Column(name="password")
     private String password;
+
+    @Column(name="isSuperUser")
     private Boolean isSuperUser;
+
+    @Column(name="email")
     private String email;
+
+
+    @Column(name="created-at")
     private Date created_at;
+
+    @Column(name="updated-at")
     private Date updated_at;
 
 
@@ -31,13 +50,30 @@ public class Users {
         updated_at = new Date();
     }
 
-     /** get and set **/
-    public Long getId() {
+
+    /** get and set **/
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+    public Date getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
+    }
+
+    public Date getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(Date updated_at) {
+        this.updated_at = updated_at;
     }
 
     public String getName() {

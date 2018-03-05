@@ -8,16 +8,32 @@ import java.util.List;
  * Created by Pınar Köroğlu on 3.03.2018.
  */
 @Entity
+@Table(name="advertisement")
 public class Advertisement {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name="advertisementID")
     private int advertisementID;
+
+    @Column(name="corporation_name")
     private String corporation_Name;
+
+    @Column(name="durationTime")
     private int durationTime;
+
+    @Column(name="advertisementName")
     private String advertisement_Name;
+
+
+    @Column(name="advertisementKind")
     private String advertisement_Kind;
-    private Date created;
-    private Date updated;
+
+    @Column(name="created-at")
+    private Date created_at;
+
+    @Column(name="updated-at")
+    private Date updated_at;
+
     @ManyToOne
     @JoinColumn(name="categoryID")
     private AdvertisementCategory advertisementCategory;
@@ -72,18 +88,18 @@ public class Advertisement {
     }
 
     public Date getCreated() {
-        return created;
+        return created_at;
     }
 
     public void setCreated(Date created) {
-        this.created = created;
+        this.created_at = created;
     }
 
     public Date getUpdated() {
-        return updated;
+        return updated_at;
     }
 
     public void setUpdated(Date updated) {
-        this.updated = updated;
+        this.updated_at = updated;
     }
 }

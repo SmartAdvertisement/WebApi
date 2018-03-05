@@ -4,8 +4,10 @@ import com.sas.webapi.Dao.UsersDao;
 import com.sas.webapi.Dto.UsersDto;
 import com.sas.webapi.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class UsersService {
 
     @Autowired
@@ -13,6 +15,7 @@ public class UsersService {
 
     @Transactional
     public Users saveUsers(UsersDto usersDto){
+
         Users users = new Users();
         users.setName(usersDto.getName());
         users.setEmail(usersDto.getEmail());
