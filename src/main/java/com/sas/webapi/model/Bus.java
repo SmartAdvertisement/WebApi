@@ -4,26 +4,33 @@ import org.springframework.data.annotation.Id;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * Created by Pınar Köroğlu on 4.03.2018.
  */
 @Entity
-public class Bus {
+@Table(name="Bus")
+public class Bus implements Serializable{
+
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private int busID;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private int id;
+
     private String busName;
+
     private String route;
+
     private String plate;
 
     /** get and set **/
-    public int getBusID() {
-        return busID;
+    public int getId() {
+        return id;
     }
 
-    public void setBusID(int busID) {
-        this.busID = busID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getBusName() {

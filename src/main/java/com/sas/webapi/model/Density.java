@@ -11,26 +11,52 @@ import java.util.Date;
 @Entity
 public class Density {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private int densityID;
-    private int count_of_men;
-    private int count_of_women;
-    private int latitude;
-    private int longidude;
-    private int average_age;
-    private Date created;
-    private Date updated;
-    @ManyToOne
-    @JoinColumn(name="busID")
-    private Bus busDensity;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="id")
+    private int id;
 
-    /** get and set **/
-    public int getDensityID() {
-        return densityID;
+    @Column(name="count_of_men")
+    private int count_of_men;
+
+    @Column(name="count_of_women")
+    private int count_of_women;
+
+    @Column(name="latitude")
+    private int latitude;
+
+    @Column(name="longitude")
+    private int longidude;
+
+    @Column(name="average_age")
+    private int average_age;
+
+    @Column(name="created_at")
+    private Date created_at;
+
+    @Column(name="updated_at")
+    private Date updated_at;
+
+
+    //private Bus bus;
+
+    @PrePersist
+    protected void onCreate() {
+        created_at = new Date();
     }
 
-    public void setDensityID(int densityID) {
-        this.densityID = densityID;
+    @PreUpdate
+    protected void onUpdate() {
+        updated_at = new Date();
+    }
+
+
+    /** get and set **/
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getCount_of_men() {
@@ -73,27 +99,13 @@ public class Density {
         this.average_age = average_age;
     }
 
-    public Date getCreated() {
-        return created;
+   /* @ManyToOne
+    @JoinColumn(name="busID")
+    public Bus getBus() {
+        return bus;
     }
 
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public Date getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(Date updated) {
-        this.updated = updated;
-    }
-
-    public Bus getBusDensity() {
-        return busDensity;
-    }
-
-    public void setBusDensity(Bus busDensity) {
-        this.busDensity = busDensity;
-    }
+    public void setBus(Bus bus) {
+        this.bus = bus;
+    }*/
 }

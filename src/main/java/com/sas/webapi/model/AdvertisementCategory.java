@@ -11,22 +11,26 @@ import java.util.List;
 @Entity
 public class AdvertisementCategory {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private int categoryID;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private int id;
     private String categoryName;
-    @ManyToOne
+
+   /* @ManyToOne
     @JoinColumn(name="genderID")
-    private List<Gender> genderID;
+
+    private Gender gender;
+*/
 
     /** get and set **/
 
-    public int getCategoryID() {
-        return categoryID;
+    public int getId() {
+        return id;
     }
 
-    public void setCategoryID(int categoryID) {
-        this.categoryID = categoryID;
+    public void setId(int id) {
+        this.id = id;
     }
+
 
     public String getCategoryName() {
         return categoryName;
@@ -36,11 +40,13 @@ public class AdvertisementCategory {
         this.categoryName = categoryName;
     }
 
-    public List<Gender> getGenderID() {
-        return genderID;
+   /* @JoinColumn(name="id",nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    public Gender getGender() {
+        return gender;
     }
 
-    public void setGenderID(List<Gender> genderID) {
-        this.genderID = genderID;
-    }
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }*/
 }

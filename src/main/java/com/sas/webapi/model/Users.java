@@ -10,8 +10,8 @@ import java.util.Date;
 @Table(name="users")
 public class Users {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="userID")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="id")
     private Integer id;
 
     @Column(name="name")
@@ -26,17 +26,17 @@ public class Users {
     @Column(name="password")
     private String password;
 
-    @Column(name="isSuperUser")
+    @Column(name="is_super_user")
     private Boolean isSuperUser;
 
     @Column(name="email")
     private String email;
 
 
-    @Column(name="created-at")
+    @Column(name="created_at")
     private Date created_at;
 
-    @Column(name="updated-at")
+    @Column(name="updated_at")
     private Date updated_at;
 
 

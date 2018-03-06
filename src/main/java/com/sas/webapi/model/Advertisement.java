@@ -10,43 +10,48 @@ import java.util.List;
 @Entity
 @Table(name="advertisement")
 public class Advertisement {
+
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name="advertisementID")
-    private int advertisementID;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name="id")
+    private int id;
 
     @Column(name="corporation_name")
     private String corporation_Name;
 
-    @Column(name="durationTime")
+    @Column(name="duration_time")
     private int durationTime;
 
-    @Column(name="advertisementName")
+    @Column(name="advertisement_name")
     private String advertisement_Name;
 
+    @Column(name="video")
+    private String video;
 
-    @Column(name="advertisementKind")
-    private String advertisement_Kind;
+    @Column(name="photo")
+    private String photo;
 
-    @Column(name="created-at")
+    @Column(name="created_at")
     private Date created_at;
 
-    @Column(name="updated-at")
+    @Column(name="updated_at")
     private Date updated_at;
 
-    @ManyToOne
+  /*  @ManyToOne
     @JoinColumn(name="categoryID")
     private AdvertisementCategory advertisementCategory;
+*/
+
 
     /** get and set **/
-    public int getAdvertisementID() {
-        return advertisementID;
+
+    public int getId() {
+        return id;
     }
 
-    public void setAdvertisementID(int advertisementID) {
-        this.advertisementID = advertisementID;
+    public void setId(int id) {
+        this.id = id;
     }
-
     public String getCorporation_Name() {
         return corporation_Name;
     }
@@ -71,22 +76,30 @@ public class Advertisement {
         this.advertisement_Name = advertisement_Name;
     }
 
-    public String getAdvertisement_Kind() {
-        return advertisement_Kind;
+    public String getVideo() {
+        return video;
     }
 
-    public void setAdvertisement_Kind(String advertisement_Kind) {
-        this.advertisement_Kind = advertisement_Kind;
+    public void setVideo(String video) {
+        this.video = video;
     }
 
-    public AdvertisementCategory getAdvertisementCategory() {
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+  /*  public AdvertisementCategory getAdvertisementCategory() {
         return advertisementCategory;
     }
 
     public void setAdvertisementCategory(AdvertisementCategory advertisementCategory) {
         this.advertisementCategory = advertisementCategory;
     }
-
+*/
     public Date getCreated() {
         return created_at;
     }
