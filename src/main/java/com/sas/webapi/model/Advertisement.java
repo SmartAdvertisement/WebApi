@@ -1,6 +1,7 @@
 package com.sas.webapi.model;
 
 import javax.persistence.*;
+import java.net.Inet4Address;
 import java.util.Date;
 import java.util.List;
 
@@ -13,8 +14,8 @@ public class Advertisement {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="id")
-    private int id;
+    @Column(name="advertisementID")
+    private Integer id;
 
     @Column(name="corporation_name")
     private String corporation_Name;
@@ -45,11 +46,11 @@ public class Advertisement {
 
     /** get and set **/
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public String getCorporation_Name() {

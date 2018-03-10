@@ -1,6 +1,7 @@
 package com.sas.webapi.model;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 
 /**
  * Created by Pınar Köroğlu on 4.03.2018.
@@ -9,25 +10,17 @@ import javax.persistence.*;
 public class AdvertisementCategory {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
+    @Column(name="categoryID")
+    private Integer id;
+    @Column(name="categoryName")
     private String categoryName;
 
     @ManyToOne
     @JoinColumn(name="genderID")
-
     private Gender gender;
 
 
     /** get and set **/
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
 
     public String getCategoryName() {
         return categoryName;
@@ -37,13 +30,20 @@ public class AdvertisementCategory {
         this.categoryName = categoryName;
     }
 
-   /* @JoinColumn(name="id",nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Gender getGender() {
         return gender;
     }
 
     public void setGender(Gender gender) {
         this.gender = gender;
-    }*/
+    }
 }

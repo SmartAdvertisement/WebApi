@@ -12,20 +12,25 @@ public class Bus implements Serializable{
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
+    @Column(name="busID")
+    private Integer id;
 
+    @Column(name="busName")
     private String busName;
 
+    @Column(name="route")
     private String route;
 
+    @Column(name="plate")
     private String plate;
 
+
     /** get and set **/
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

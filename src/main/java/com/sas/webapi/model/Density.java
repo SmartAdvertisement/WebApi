@@ -11,8 +11,8 @@ import java.util.Date;
 public class Density {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id")
-    private int id;
+    @Column(name="densityID")
+    private Integer id;
 
     @Column(name="count_of_men")
     private int count_of_men;
@@ -48,16 +48,14 @@ public class Density {
         updated_at = new Date();
     }
 
-
     /** get and set **/
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
-
     public int getCount_of_men() {
         return count_of_men;
     }
