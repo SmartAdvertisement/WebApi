@@ -20,6 +20,10 @@ public interface UsersRepository extends JpaRepository<Users,Integer>{
     @Query("SELECT 1 FROM Users u WHERE u.username = :username")
     Integer checkUserExistence(@Param("username") String username);
 
+    @Query("SELECT u FROM Users u WHERE u.id = :id")
+    Users findUsersById(@Param("id") int id);
+
+
     @Transactional
     @Modifying
     @Query("DELETE FROM Users u WHERE u.username = :username")
