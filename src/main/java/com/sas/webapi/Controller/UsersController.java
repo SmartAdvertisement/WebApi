@@ -21,6 +21,16 @@ public class UsersController {
         return this.userService.getAll();
     }
 
+    @GetMapping(value ="/{id}" ,produces = "application/json")
+    @ResponseBody
+    public ResponseEntity<?> getUserById(@PathVariable int id){
+        Users user = this.userService.getUser(id);
+        if(user==null){
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(user);
+    }
+
     @ResponseBody
     @RequestMapping(method= RequestMethod.POST)
     public ResponseEntity addUser(@RequestBody String jsonUser){

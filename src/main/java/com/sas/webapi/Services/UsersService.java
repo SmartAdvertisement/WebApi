@@ -26,6 +26,9 @@ public class UsersService {
         return this.userRepository.checkUserExistence(username) != null;
     }
 
+
+    public Users getUser(int id){return this.userRepository.findUsersById(id);}
+
     public Users getByUsername(String username) {
         return this.userRepository.findUserByUsername(username);
     }
