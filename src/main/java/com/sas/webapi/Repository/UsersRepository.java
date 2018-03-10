@@ -8,11 +8,12 @@ import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 public interface UsersRepository extends JpaRepository<Users,Integer>{
 
     @Query("SELECT u FROM Users u WHERE u.username = :username")
-    Users findUserByUsername(@Param("username") String username);
+    Optional<Users> findUserByUsername(@Param("username") String username);
 
     @Query("SELECT 1 FROM Users u WHERE u.id = :id")
     Integer checkUserExistenceById(@Param("id") int id);

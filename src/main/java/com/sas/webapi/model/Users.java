@@ -3,6 +3,7 @@ package com.sas.webapi.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 
 @Entity
@@ -25,12 +26,15 @@ public class Users {
     @Column(name="password")
     private String password;
 
-    @Column(name="is_super_user")
-    private Boolean isSuperUser;
-
     @Column(name="email")
     private String email;
 
+    @Column(name="active")
+    private int active;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinTable(name="user_role",joinColumns = @JoinColumn(name="user_role"))
+    private Set<Roles> roles;
 
     @Column(name="created_at")
     private Date created_at;
@@ -38,6 +42,14 @@ public class Users {
     @Column(name="updated_at")
     private Date updated_at;
 
+    public Users(Users users) {
+        this.name = users.getName();
+        this.surname = users.getSurname();
+        this.username = users.getUsername();
+        this.password = users.getPassword();
+        this.email = users.getEmail();
+        this.active = users.getActive();
+    }
 
     @PrePersist
     protected void onCreate() {
@@ -99,12 +111,12 @@ public class Users {
         this.username = username;
     }
 
-    public Boolean getSuperUser() {
-        return isSuperUser;
+    public Set<Roles> getRoles() {
+        return roles;
     }
 
-    public void setSuperUser(Boolean superUser) {
-        isSuperUser = superUser;
+    public void setRoles(Set<Roles> roles) {
+        this.roles = roles;
     }
 
     public String getEmail() {
@@ -121,5 +133,13 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
     }
 }

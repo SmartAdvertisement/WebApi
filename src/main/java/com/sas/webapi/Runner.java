@@ -18,3 +18,7 @@ public class Runner {
 		SpringApplication.run(Runner.class, args);
 	}
 }
+//TODO: rol sınıfı veritabanına tablo eklenecek superuser kolonu silinecek
+//todo : videoda dk 30 da kaldık
+// todo: video linki : https://www.youtube.com/watch?v=egXtoL5Kg08
+//todo : diger classların metodları denenmedi onların denenmesi gerek
