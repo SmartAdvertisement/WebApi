@@ -37,10 +37,10 @@ public class Advertisement {
     @Column(name="updated_at")
     private Date updated_at;
 
-  /*  @ManyToOne
+    @ManyToOne
     @JoinColumn(name="categoryID")
     private AdvertisementCategory advertisementCategory;
-*/
+
 
 
     /** get and set **/

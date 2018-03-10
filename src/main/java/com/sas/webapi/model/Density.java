@@ -1,6 +1,5 @@
 package com.sas.webapi.model;
 
-import com.sun.javafx.beans.IDProperty;
 
 import javax.persistence.*;
 import java.util.Date;

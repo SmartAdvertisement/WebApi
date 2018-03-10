@@ -1,9 +1,6 @@
 package com.sas.webapi.model;
 
-import com.sun.javafx.beans.IDProperty;
-
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Created by Pınar Köroğlu on 4.03.2018.
@@ -15,11 +12,11 @@ public class AdvertisementCategory {
     private int id;
     private String categoryName;
 
-   /* @ManyToOne
+    @ManyToOne
     @JoinColumn(name="genderID")
 
     private Gender gender;
-*/
+
 
     /** get and set **/
 

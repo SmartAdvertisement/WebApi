@@ -1,14 +1,8 @@
 package com.sas.webapi.model;
 
-import com.sun.javafx.beans.IDProperty;
-import org.springframework.data.annotation.Id;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.*;
+
 
 @Entity
 public class Gender {

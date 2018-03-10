@@ -1,30 +1,46 @@
 package com.sas.webapi.Services;
 
-import com.sas.webapi.Dao.UsersDao;
-import com.sas.webapi.Dto.UsersDto;
+
+import com.sas.webapi.Repository.UsersRepository;
 import com.sas.webapi.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class UsersService {
 
     @Autowired
-    private UsersDao usersDao;
+    private UsersRepository userRepository;
 
-    @Transactional
-    public Users saveUsers(UsersDto usersDto){
+    public List<Users> getAll() {
+        return this.userRepository.findAll();
+    }
 
-        Users users = new Users();
-        users.setName(usersDto.getName());
-        users.setEmail(usersDto.getEmail());
-        users.setSuperUser(usersDto.getSuperUser());
-        users.setSurname(usersDto.getSurname());
-        users.setPassword(usersDto.getPassword());
-        usersDao.save(users);
+    public boolean checkUserExistenceById(int id) {
+        return this.userRepository.checkUserExistenceById(id) !=null;
+    }
 
-        return users;
+    public boolean checkUserExistence(String username) {
+        return this.userRepository.checkUserExistence(username) != null;
+    }
+
+    public Users getByUsername(String username) {
+        return this.userRepository.findUserByUsername(username);
+    }
+
+    public void save(Users user) {
+        this.userRepository.save(user);
+    }
+
+    public void deleteById(int id) {
+        System.out.print("asd");
+        this.userRepository.deleteById(id);
+    }
+
+    public void deleteByUsername(String username) {
+        this.userRepository.deleteUserByUsername(username);
     }
 
 }
