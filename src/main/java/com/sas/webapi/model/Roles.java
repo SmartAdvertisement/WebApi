@@ -7,10 +7,10 @@ import javax.persistence.*;
 public class Roles {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column("id")
+    @Column(name="id")
     private int id;
 
-    @Column("role")
+    @Column(name="role")
     private String role;
 
     public int getId() {

@@ -25,7 +25,7 @@ public interface CategoryRepository extends JpaRepository<AdvertisementCategory,
 
     @Transactional
     @Modifying
-    @Query("DELETE FROM AdvertisementCategory u WHERE u.corporation_Name = :categoryName")
+    @Query("DELETE FROM AdvertisementCategory u WHERE u.categoryName = :categoryName")
     void deleteCategoryByCategoryName(@Param("categoryName") String categoryName);
 
 }

@@ -2,13 +2,14 @@ package com.sas.webapi.model;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
 
 @Entity
 @Table(name="users")
-public class Users {
+public class Users implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="userID")
