@@ -12,7 +12,7 @@ public class Bus{
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="busID")
+    @Column(name="id")
     private Integer id;
 
     @Column(name="busName")

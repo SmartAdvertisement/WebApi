@@ -11,8 +11,8 @@ import java.util.Set;
 @Table(name="users")
 public class Users implements Serializable {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="userID")
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name="user_id")
     private Integer id;
 
     @Column(name="name")
@@ -33,8 +33,8 @@ public class Users implements Serializable {
     @Column(name="active")
     private int active;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinTable(name="user_role",joinColumns = @JoinColumn(name="user_role"))
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Roles> roles;
 
     @Column(name="created_at")
@@ -43,10 +43,13 @@ public class Users implements Serializable {
     @Column(name="updated_at")
     private Date updated_at;
 
+    public Users(){}
+
     public Users(Users users) {
         this.name = users.getName();
         this.surname = users.getSurname();
         this.username = users.getUsername();
+        this.roles = users.getRoles();
         this.password = users.getPassword();
         this.email = users.getEmail();
         this.active = users.getActive();
