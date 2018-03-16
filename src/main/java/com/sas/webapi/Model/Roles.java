@@ -1,4 +1,4 @@
-package com.sas.webapi.model;
+package com.sas.webapi.Model;
 
 import javax.persistence.*;
 
@@ -12,7 +12,7 @@ public class Roles {
 
     @Column(name="role")
     private String role;
-
+     /*get set */
     public int getId() {
         return id;
     }

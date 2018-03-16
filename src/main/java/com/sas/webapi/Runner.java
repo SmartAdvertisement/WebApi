@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 @EnableJpaRepositories("com.sas.webapi.Repository")
-@EntityScan(basePackages = "com.sas.webapi.model")
+@EntityScan(basePackages = "com.sas.webapi.Model")
 @ComponentScan(basePackages = "com.sas.webapi")
 @EnableTransactionManagement
 public class Runner {

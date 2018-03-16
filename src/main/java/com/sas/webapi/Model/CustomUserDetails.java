@@ -1,4 +1,4 @@
-package com.sas.webapi.model;
+package com.sas.webapi.Model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,7 +24,7 @@ public class CustomUserDetails extends Users implements UserDetails {
                 .map(roles -> new SimpleGrantedAuthority("ROLE_"+roles.getRole()))
                 .collect(Collectors.toList());
     }
-
+   /*get set*/
     @Override
     public String getPassword() {
         return super.getPassword();

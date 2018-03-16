@@ -2,7 +2,7 @@ package com.sas.webapi.Services;
 
 
 import com.sas.webapi.Repository.UsersRepository;
-import com.sas.webapi.model.Users;
+import com.sas.webapi.Model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

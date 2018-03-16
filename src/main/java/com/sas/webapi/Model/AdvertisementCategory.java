@@ -1,7 +1,6 @@
-package com.sas.webapi.model;
+package com.sas.webapi.Model;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 
 /**
  * Created by Pınar Köroğlu on 4.03.2018.

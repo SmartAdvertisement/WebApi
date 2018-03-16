@@ -1,10 +1,7 @@
 package com.sas.webapi.Services;
 
-import com.sas.webapi.Repository.AdvertisementRepository;
 import com.sas.webapi.Repository.BusRepository;
-import com.sas.webapi.model.Advertisement;
-import com.sas.webapi.model.Bus;
-import org.hibernate.query.criteria.internal.BasicPathUsageException;
+import com.sas.webapi.Model.Bus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

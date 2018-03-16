@@ -1,10 +1,8 @@
 package com.sas.webapi.Controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sas.webapi.Services.BusServices;
 import com.sas.webapi.Services.CategoryServices;
-import com.sas.webapi.model.AdvertisementCategory;
-import com.sas.webapi.model.Bus;
+import com.sas.webapi.Model.AdvertisementCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

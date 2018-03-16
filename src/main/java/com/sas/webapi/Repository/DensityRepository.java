@@ -1,7 +1,6 @@
 package com.sas.webapi.Repository;
 
-import com.sas.webapi.model.Advertisement;
-import com.sas.webapi.model.Density;
+import com.sas.webapi.Model.Density;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

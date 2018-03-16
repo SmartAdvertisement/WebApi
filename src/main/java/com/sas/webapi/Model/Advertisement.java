@@ -1,9 +1,7 @@
-package com.sas.webapi.model;
+package com.sas.webapi.Model;
 
 import javax.persistence.*;
-import java.net.Inet4Address;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Pınar Köroğlu on 3.03.2018.

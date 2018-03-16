@@ -1,14 +1,12 @@
 package com.sas.webapi.Repository;
 
-import com.sas.webapi.model.Advertisement;
-import com.sas.webapi.model.AdvertisementCategory;
+import com.sas.webapi.Model.AdvertisementCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 /**
  * Created by Pınar Köroğlu on 10.03.2018.
