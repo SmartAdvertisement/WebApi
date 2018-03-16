@@ -3,7 +3,6 @@ package com.sas.webapi.model;
 import javax.persistence.*;
 import java.net.Inet4Address;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Pınar Köroğlu on 3.03.2018.
