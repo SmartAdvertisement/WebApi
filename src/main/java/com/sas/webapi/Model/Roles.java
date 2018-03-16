@@ -3,11 +3,11 @@ package com.sas.webapi.Model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Roles")
+@Table(name="roles")
 public class Roles {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
+    @Column(name="role_id")
     private int id;
 
     @Column(name="role")

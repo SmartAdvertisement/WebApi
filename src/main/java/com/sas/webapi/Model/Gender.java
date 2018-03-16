@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Gender {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="genderID")
+    @Column(name="id")
     private Integer id;
 
     @Column(name="name")

@@ -1,12 +1,18 @@
 package com.sas.webapi.Controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.sas.webapi.Repository.RoleRepository;
 import com.sas.webapi.Services.UsersService;
-import com.sas.webapi.Model.Users;
+import com.sas.webapi.model.Users;
+import com.sas.webapi.model.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 
@@ -15,6 +21,9 @@ import java.util.List;
 public class UsersController {
     @Autowired
     private UsersService userService;
+
+    @Autowired
+    private RoleRepository roleRepository;
 
     @RequestMapping
     public List<Users> getAll() {
@@ -33,13 +42,17 @@ public class UsersController {
 
     @ResponseBody
     @RequestMapping(method= RequestMethod.POST)
+    @JsonDeserialize(as = Users.class)
     public ResponseEntity addUser(@RequestBody String jsonUser){
         try{
             Users user = new ObjectMapper().readValue(jsonUser,Users.class);
+            user.setActive(1);
+            Roles userRole = roleRepository.findRolesById(1);
+            user.setRoles(new HashSet<>(Arrays.asList(userRole)));
             this.userService.save(user);
 
         }catch (Exception e){
-
+            System.out.print(e);
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return ResponseEntity.ok(HttpStatus.OK);

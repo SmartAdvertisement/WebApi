@@ -12,7 +12,7 @@ public class Advertisement {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="advertisementID")
+    @Column(name="id")
     private Integer id;
 
     @Column(name="corporation_name")

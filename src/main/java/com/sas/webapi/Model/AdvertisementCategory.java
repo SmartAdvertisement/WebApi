@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class AdvertisementCategory {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="categoryID")
+    @Column(name="id")
     private Integer id;
     @Column(name="categoryName")
     private String categoryName;

@@ -11,7 +11,7 @@ import java.util.Date;
 public class Density {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="densityID")
+    @Column(name="id")
     private Integer id;
 
     @Column(name="count_of_men")
