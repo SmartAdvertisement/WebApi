@@ -1,7 +1,7 @@
 package com.sas.webapi.Repository;
 
-import com.sas.webapi.model.Roles;
-import com.sas.webapi.model.Users;
+import com.sas.webapi.Model.Roles;
+import com.sas.webapi.Model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

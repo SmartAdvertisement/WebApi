@@ -1,6 +1,7 @@
 package com.sas.webapi.Model;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Pınar Köroğlu on 4.03.2018.
@@ -18,7 +19,9 @@ public class AdvertisementCategory {
     @JoinColumn(name="genderID")
     private Gender gender;
 
-
+    @OneToMany(fetch=FetchType.EAGER)
+    @JoinColumn(name="Advertisement_Category")
+    private List<Advertisement> advertisements;
     /** get and set **/
 
     public String getCategoryName() {
@@ -29,6 +32,13 @@ public class AdvertisementCategory {
         this.categoryName = categoryName;
     }
 
+    public List<Advertisement> getAdvertisements() {
+        return advertisements;
+    }
+
+    public void setAdvertisements(List<Advertisement> advertisements) {
+        this.advertisements = advertisements;
+    }
 
     public Integer getId() {
         return id;

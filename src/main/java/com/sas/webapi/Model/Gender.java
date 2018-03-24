@@ -14,7 +14,6 @@ public class Gender {
     @Column(name="name")
     private String name;
 
-  //  private Set<AdvertisementCategory> advertisementCategory = new HashSet<AdvertisementCategory>(0);
 
 
     /** get and set **/

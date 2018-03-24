@@ -36,10 +36,6 @@ public class Advertisement {
     @Column(name="updated_at")
     private Date updated_at;
 
-    @ManyToOne
-    @JoinColumn(name="categoryID")
-    private AdvertisementCategory advertisementCategory;
-
 
 
     /** get and set **/
@@ -91,14 +87,7 @@ public class Advertisement {
         this.photo = photo;
     }
 
-  /*  public AdvertisementCategory getAdvertisementCategory() {
-        return advertisementCategory;
-    }
 
-    public void setAdvertisementCategory(AdvertisementCategory advertisementCategory) {
-        this.advertisementCategory = advertisementCategory;
-    }
-*/
     public Date getCreated() {
         return created_at;
     }
