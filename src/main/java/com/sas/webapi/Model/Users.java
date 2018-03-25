@@ -75,6 +75,7 @@ public class Users implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
+
     public Date getCreated_at() {
         return created_at;
     }

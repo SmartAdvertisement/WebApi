@@ -12,6 +12,10 @@ import javax.transaction.Transactional;
  * Created by Pınar Köroğlu on 10.03.2018.
  */
 public interface CategoryRepository extends JpaRepository<AdvertisementCategory,Integer> {
+
+    @Query("SELECT r FROM Roles r WHERE r.id = :id")
+    AdvertisementCategory findRolesById(@Param("id") int id);
+
     @Query("SELECT u FROM AdvertisementCategory u WHERE u.categoryName = :categoryName")
     AdvertisementCategory findCategoryByCategoryName(@Param("categoryName") String categoryName);
 

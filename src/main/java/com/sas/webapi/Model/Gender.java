@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 
 @Entity
+@Table(name="gender")
 public class Gender {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -13,6 +14,7 @@ public class Gender {
 
     @Column(name="name")
     private String name;
+
 
 
 

@@ -1,6 +1,7 @@
 package com.sas.webapi.Model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Pınar Köroğlu on 4.03.2018.

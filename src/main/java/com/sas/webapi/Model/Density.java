@@ -8,6 +8,7 @@ import java.util.Date;
  * Created by Pınar Köroğlu on 3.03.2018.
  */
 @Entity
+@Table(name="density")
 public class Density {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -96,22 +97,7 @@ public class Density {
         this.average_age = average_age;
     }
 
-    public Date getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-    public Date getUpdated_at() {
-        return updated_at;
-    }
-
-    public void setUpdated_at(Date updated_at) {
-        this.updated_at = updated_at;
-    }
-/* @ManyToOne
+   /* @ManyToOne
     @JoinColumn(name="busID")
     public Bus getBus() {
         return bus;

@@ -1,13 +1,18 @@
 package com.sas.webapi.Controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sas.webapi.Model.AdvertisementCategory;
+import com.sas.webapi.Repository.CategoryRepository;
 import com.sas.webapi.Services.AdvertisementServices;
 import com.sas.webapi.Model.Advertisement;
+import com.sas.webapi.Services.CategoryServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -18,7 +23,8 @@ import java.util.List;
 public class AdvertisementController {
     @Autowired
     private AdvertisementServices advertisementService;
-
+    @Autowired
+    private CategoryRepository categoryRepository;
     @RequestMapping
     public List<Advertisement> getAll() {
         return this.advertisementService.getAll();
@@ -29,6 +35,9 @@ public class AdvertisementController {
     public ResponseEntity addAdvertisement(@RequestBody String jsonAdvertisement){
         try{
             Advertisement advertisement = new ObjectMapper().readValue(jsonAdvertisement,Advertisement.class);
+            advertisement.setDurationTime(1);
+            AdvertisementCategory category = categoryRepository.findRolesById(1);
+            advertisement.setAdvertisementCategory(category);
             this.advertisementService.save(advertisement);
 
         }catch (Exception e){

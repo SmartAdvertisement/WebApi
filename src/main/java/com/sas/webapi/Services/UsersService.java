@@ -39,7 +39,6 @@ public class UsersService {
     }
 
     public void deleteById(int id) {
-        System.out.print("asd");
         this.userRepository.deleteById(id);
     }
 
