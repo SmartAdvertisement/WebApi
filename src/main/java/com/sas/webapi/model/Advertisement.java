@@ -1,12 +1,7 @@
 package com.sas.webapi.model;
 
 import javax.persistence.*;
-import java.net.Inet4Address;
 import java.util.Date;
-
-/**
- * Created by Pınar Köroğlu on 3.03.2018.
- */
 @Entity
 @Table(name="advertisement")
 public class Advertisement {
@@ -42,8 +37,6 @@ public class Advertisement {
     private AdvertisementCategory advertisementCategory;
 
 
-
-    /** get and set **/
 
     public Integer getId() {
         return id;

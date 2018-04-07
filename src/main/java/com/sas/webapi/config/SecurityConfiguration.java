@@ -38,6 +38,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .anyRequest().permitAll()
                 .and()
                 .formLogin().permitAll();
+
     }
 
     private PasswordEncoder getPasswordEncoder() {

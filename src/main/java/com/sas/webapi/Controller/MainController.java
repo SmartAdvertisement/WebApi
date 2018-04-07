@@ -1,13 +1,20 @@
 package com.sas.webapi.Controller;
 
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @RequestMapping("/")
-@RestController
+@Controller
 public class MainController {
+
+    @RequestMapping(value = "/",method = RequestMethod.GET)
+    public String index(){return "index1";}
+
+    @GetMapping("/login")
+    public String login(){return "login";}
 
     @GetMapping("/all")
     public String hello(){

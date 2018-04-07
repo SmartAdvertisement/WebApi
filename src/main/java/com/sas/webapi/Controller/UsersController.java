@@ -41,7 +41,7 @@ public class UsersController {
     }
 
     @ResponseBody
-    @RequestMapping(method= RequestMethod.POST)
+    @RequestMapping(value="/signup",method= RequestMethod.POST)
     @JsonDeserialize(as = Users.class)
     public ResponseEntity addUser(@RequestBody String jsonUser){
         try{
@@ -55,7 +55,7 @@ public class UsersController {
             System.out.print(e);
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return ResponseEntity.ok(HttpStatus.OK);
+            return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/id/{id}", method = RequestMethod.DELETE)
