@@ -2,6 +2,7 @@ package com.sas.webapi.Model;
 
 
 import javax.persistence.*;
+import java.text.DecimalFormat;
 import java.util.Date;
 
 /**
@@ -22,10 +23,10 @@ public class Density {
     private int count_of_women;
 
     @Column(name="latitude")
-    private int latitude;
+    private Double latitude;
 
     @Column(name="longitude")
-    private int longidude;
+    private Double longidude;
 
     @Column(name="average_age")
     private int average_age;
@@ -35,9 +36,6 @@ public class Density {
 
     @Column(name="updated_at")
     private Date updated_at;
-
-
-    //private Bus bus;
 
     @PrePersist
     protected void onCreate() {
@@ -73,20 +71,36 @@ public class Density {
         this.count_of_women = count_of_women;
     }
 
-    public int getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(int latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public int getLongidude() {
+    public Double getLongidude() {
         return longidude;
     }
 
-    public void setLongidude(int longidude) {
+    public void setLongidude(Double longidude) {
         this.longidude = longidude;
+    }
+
+    public Date getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
+    }
+
+    public Date getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(Date updated_at) {
+        this.updated_at = updated_at;
     }
 
     public int getAverage_age() {

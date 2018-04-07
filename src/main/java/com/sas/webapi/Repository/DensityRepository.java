@@ -27,4 +27,7 @@ public interface DensityRepository extends JpaRepository<Density,Integer> {
 
     @Query("SELECT u.count_of_women FROM Density u WHERE u.created_at= :created_at")
     void CountOfWomen(@Param("created_at") Date created_at);
+
+    @Query("SELECT u FROM Density u WHERE u.created_at = :created_at ")
+    Density findDensityByDate(@Param("created_at") Date created_at);
 }
