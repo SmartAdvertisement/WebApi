@@ -1,11 +1,12 @@
 package com.sas.webapi.Services;
 
-import com.sas.webapi.Repository.CategoryRepository;
+import com.sas.webapi.Model.Density;
 import com.sas.webapi.Repository.DensityRepository;
-import com.sas.webapi.model.AdvertisementCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sun.util.calendar.LocalGregorianCalendar;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,29 +14,22 @@ import java.util.List;
  */
 @Service
 public class DensityServices {
-    /*
+
     @Autowired
     DensityRepository densityRepository;
 
-    public List<AdvertisementCategory> getAll() {
+    public List<Density> getAll() {
         return this.densityRepository.findAll();
     }
-
-    public boolean checkCategoryExistenceById(int id) {
-        return this.densityRepository.checkCategoryExistenceById(id) !=null;
+    public void save(Density density){
+       this.densityRepository.save(density);
     }
 
-    public AdvertisementCategory getByAdvertisementName(String advertisement_Name) {
-        return this.densityRepository.findCategoryByCategoryName(advertisement_Name);
+    public void CountOfMen(Date created_at) {
+        this.densityRepository.CountOfMen(created_at);
     }
-
-    public void save(AdvertisementCategory advertisementCategory) {
-        this.densityRepository.save(advertisementCategory);
+    public void CountOfWomen(Date created_at) {
+        this.densityRepository.CountOfWomen(created_at);
     }
-
-    public void deleteById(int id) {
-        this.densityRepository.deleteById(id);
-    }
-*/
 
 }

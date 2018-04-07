@@ -4,11 +4,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.sas.webapi.Repository.RoleRepository;
 import com.sas.webapi.Services.UsersService;
-import com.sas.webapi.model.Users;
-import com.sas.webapi.model.Roles;
+import com.sas.webapi.Model.Users;
+import com.sas.webapi.Model.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -24,7 +25,8 @@ public class UsersController {
 
     @Autowired
     private RoleRepository roleRepository;
-
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @RequestMapping
     public List<Users> getAll() {
         return this.userService.getAll();
@@ -47,6 +49,7 @@ public class UsersController {
         try{
             Users user = new ObjectMapper().readValue(jsonUser,Users.class);
             user.setActive(1);
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             Roles userRole = roleRepository.findRolesById(1);
             user.setRoles(new HashSet<>(Arrays.asList(userRole)));
             this.userService.save(user);

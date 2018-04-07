@@ -1,5 +1,6 @@
-package com.sas.webapi.model;
+package com.sas.webapi.Model;
 
+import com.sas.webapi.Model.Users;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

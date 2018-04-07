@@ -1,4 +1,4 @@
-package com.sas.webapi.model;
+package com.sas.webapi.Model;
 
 import javax.persistence.*;
 import java.io.Serializable;

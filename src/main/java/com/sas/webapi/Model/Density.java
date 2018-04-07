@@ -1,4 +1,4 @@
-package com.sas.webapi.model;
+package com.sas.webapi.Model;
 
 
 import javax.persistence.*;
@@ -8,6 +8,7 @@ import java.util.Date;
  * Created by Pınar Köroğlu on 3.03.2018.
  */
 @Entity
+@Table(name="density")
 public class Density {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

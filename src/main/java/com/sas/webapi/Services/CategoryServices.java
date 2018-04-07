@@ -1,9 +1,7 @@
 package com.sas.webapi.Services;
 
-import com.sas.webapi.Repository.AdvertisementRepository;
 import com.sas.webapi.Repository.CategoryRepository;
-import com.sas.webapi.model.Advertisement;
-import com.sas.webapi.model.AdvertisementCategory;
+import com.sas.webapi.Model.AdvertisementCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

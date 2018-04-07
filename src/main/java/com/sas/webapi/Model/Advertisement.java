@@ -1,7 +1,14 @@
-package com.sas.webapi.model;
+package com.sas.webapi.Model;
+
+import com.sas.webapi.Model.AdvertisementCategory;
 
 import javax.persistence.*;
+import java.net.Inet4Address;
 import java.util.Date;
+
+/**
+ * Created by Pınar Köroğlu on 3.03.2018.
+ */
 @Entity
 @Table(name="advertisement")
 public class Advertisement {
@@ -37,6 +44,29 @@ public class Advertisement {
     private AdvertisementCategory advertisementCategory;
 
 
+
+    @PrePersist
+    protected void onCreate() {
+        created_at = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updated_at = new Date();
+    }
+
+    public Advertisement(){
+
+    }
+
+    public Advertisement(Advertisement advertisement){
+        this.corporation_Name=advertisement.getCorporation_Name();
+         this.advertisement_Name=advertisement.getAdvertisement_Name();
+        this.durationTime=advertisement.getDurationTime();
+        this.photo=advertisement.getPhoto();
+        this.video=advertisement.getVideo();
+    }
+    /** get and set **/
 
     public Integer getId() {
         return id;
@@ -85,27 +115,29 @@ public class Advertisement {
         this.photo = photo;
     }
 
-  /*  public AdvertisementCategory getAdvertisementCategory() {
+    public Date getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
+    }
+
+    public Date getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(Date updated_at) {
+        this.updated_at = updated_at;
+    }
+
+    public AdvertisementCategory getAdvertisementCategory() {
         return advertisementCategory;
     }
 
     public void setAdvertisementCategory(AdvertisementCategory advertisementCategory) {
         this.advertisementCategory = advertisementCategory;
     }
-*/
-    public Date getCreated() {
-        return created_at;
-    }
 
-    public void setCreated(Date created) {
-        this.created_at = created;
-    }
 
-    public Date getUpdated() {
-        return updated_at;
-    }
-
-    public void setUpdated(Date updated) {
-        this.updated_at = updated;
-    }
 }

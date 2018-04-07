@@ -1,4 +1,4 @@
-package com.sas.webapi.model;
+package com.sas.webapi.Model;
 
 
 import javax.persistence.*;
@@ -75,6 +75,7 @@ public class Users implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
+
     public Date getCreated_at() {
         return created_at;
     }
