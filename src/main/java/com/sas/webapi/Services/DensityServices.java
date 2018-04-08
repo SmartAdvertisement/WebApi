@@ -20,9 +20,11 @@ public class DensityServices {
     public List<Density> getAll() {
         return this.densityRepository.findAll();
     }
+
     public void save(Density density){
        this.densityRepository.save(density);
     }
+
     public Density getDensity(Date created_at){return this.densityRepository.findDensityByDate(created_at);}
     public void CountOfMen(Date created_at) {
         this.densityRepository.CountOfMen(created_at);

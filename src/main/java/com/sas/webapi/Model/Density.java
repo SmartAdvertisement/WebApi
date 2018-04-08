@@ -47,6 +47,7 @@ public class Density {
         updated_at = new Date();
     }
 
+
     /** get and set **/
     public Integer getId() {
         return id;

@@ -29,6 +29,7 @@ public class DensityController {
         return this.densityServices.getAll();
     }
 
+
     @GetMapping(value = "/{created_at}", produces = "application/json")
     @ResponseBody
     public ResponseEntity<?> getDensityByDate(@PathVariable String created_at) {
