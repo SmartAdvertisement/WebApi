@@ -21,7 +21,7 @@ public interface DensityRepository extends JpaRepository<Density,Integer> {
     @Modifying
     @Query("DELETE FROM Density u WHERE u.id = :id")
     void deleteDensityByDensityId(@Param("id") Integer id);
-    
+
 
     @Query("SELECT u.count_of_men FROM Density u WHERE u.created_at= :created_at")
     void CountOfMen(@Param("created_at") Date created_at);
