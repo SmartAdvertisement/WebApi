@@ -11,8 +11,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-
 @SpringBootApplication
+@EnableJpaRepositories("com.sas.webapi.Repository")
+@EntityScan(basePackages = "com.sas.webapi.Model")
+@ComponentScan(basePackages = "com.sas.webapi")
+@EnableTransactionManagement
 public class Runner extends SpringBootServletInitializer{
 
 	@Override
