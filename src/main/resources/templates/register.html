@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Kayıt Ol!</title>
+
+    <link th:href="@{/vendors/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link th:href="@{/vendors/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+    <!-- NProgress -->
+    <link th:href="@{/vendors/nprogress/nprogress.css}" rel="stylesheet">
+    <!-- iCheck -->
+    <link th:href="@{/vendors/animate.css/animate.min.css}" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+</head>
+<body class="login">
+<div>
+    <a class="hiddenanchor" id="signup"></a>
+    <a class="hiddenanchor" id="signin"></a>
+
+    <div class="login_wrapper">
+        <div class="animate form login_form">
+            <section class="login_content">
+                <form>
+                    <h1>Giriş Yap</h1>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Kullanıcı Adı" required/>
+                    </div>
+
+                    <div>
+                        <input type="password" class="form-control" placeholder="Şifre" required/>
+                    </div>
+                    <div>
+                        <a class="btn btn-default submit" id="loginButton">Giriş Yap</a>
+                        <a class="reset_pass" href="#">Şifrenizi mi unuttunuz?</a>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="separator">
+                        <p class="change_link">Yeni misin?
+                            <a href="#signup" class="to_register"> Üye ol </a>
+                        </p>
+
+                        <div class="clearfix"></div>
+                        <br />
+
+                        <div>
+                            <h1><i class="fa fa-paw"></i> Smart Advertisement System!</h1>
+                            <p>©2018 All Rights Reserved.</p>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+
+        <div id="register" class="animate form registration_form">
+            <section class="login_content">
+                <form>
+                    <h1>Üye Ol</h1>
+                    <div>
+                        <input type="text" class="form-control" id="name" placeholder="İsim" required/>
+                    </div>
+                    <div>
+                        <input type="text" class="form-control" id="surname" placeholder="Soyisim" required/>
+                    </div>
+                    <div>
+                        <input type="text" class="form-control" id="username" placeholder="Kullanıcı Adı" required/>
+                    </div>
+                    <div>
+                        <input type="email" class="form-control" id="email" placeholder="E-mail" required/>
+                    </div>
+                    <div>
+                        <input type="password" class="form-control" id="password" placeholder="Şifre" required/>
+                    </div>
+                    <div>
+                        <input type="password" class="form-control" id="password2" placeholder="Şifre tekrar" required/>
+                    </div>
+                    <div>
+                        <a class="btn btn-default submit" id="registerButton" >Gönder</a>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="separator">
+                        <p class="change_link">Zaten üye misin?
+                            <a href="#signin" class="to_register"> Giriş Yap </a>
+                        </p>
+
+                        <div class="clearfix"></div>
+                        <br />
+
+                        <div>
+                            <h1><i class="fa fa-paw"></i> Smart Advertisement System</h1>
+                            <p>©2018 All Rights Reserved.</p>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+<script th:src="@{/vendors/jquery/dist/jquery.min.js}"></script>
+<!-- Bootstrap -->
+<script th:src="@{/vendors/bootstrap/dist/js/bootstrap.min.js}"></script>
+<!-- FastClick -->
+<script th:src="@{/vendors/fastclick/lib/fastclick.js}"></script>
+<!-- NProgress -->
+<script th:src="@{/vendors/nprogress/nprogress.js}"></script>
+
+<script th:src="@{/vendors/validator/validator.js}"></script>
+
+<script>
+    $("#registerButton").click(function (e) {
+        var password=$("#password").val();
+        var password2=$("#password2").val();
+        if(password===password2) {
+            var name = $("#name").val();
+            var surname = $("#surname").val();
+            var username = $("#username").val();
+            var email = $("email").val();
+
+            var obj = '{'
+                +'"name" : '+name+','
+                +'"surname" : '+surname+','
+                +'"name" : '+name+','
+                +'"name" : '+name+','
+                +'"name" : '+name+','
+                +'}';
+
+        }else{
+            alert("Parolalar uyuşmuyor.");
+        }
+
+
+    })
+</script>
+
+</body>
+</html>
