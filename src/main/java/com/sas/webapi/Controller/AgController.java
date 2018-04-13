@@ -9,9 +9,12 @@ import com.sas.webapi.Services.AdvertisementServices;
 import com.sas.webapi.Services.AgServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by Pınar Köroğlu on 4.04.2018.
@@ -38,6 +41,11 @@ public class AgController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
+    @ResponseBody
+    @RequestMapping(value="/getAll",method= RequestMethod.GET,produces= MediaType.APPLICATION_JSON_VALUE,consumes=MediaType.APPLICATION_JSON_VALUE)
+    public List<AgProgramlama> getAll(){
+        return this.agServices.getAll();
+    }
 
 
 

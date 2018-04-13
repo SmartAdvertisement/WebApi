@@ -162,14 +162,36 @@
 
         })
     }
+    function objectToXml(obj) {
+        var xml = '';
+
+        for (var prop in obj) {
+            if (!obj.hasOwnProperty(prop)) {
+                continue;
+            }
+
+            if (obj[prop] == undefined)
+                continue;
+
+            xml += "<" + prop + ">";
+            if (typeof obj[prop] == "object")
+                xml += objectToXml(new Object(obj[prop]));
+            else
+                xml += obj[prop];
+
+            xml += "<!--" + prop + "-->";
+        }
+
+        return xml;
+    }
     $("#getJson").click(function(){
         $.ajax({
-            url: "/agProgramlama/add",
+            url: "/agProgramlama/getAll",
             type: "GET",
             dataType:'json',
             contentType: "application/json; charset=utf-8",
             success: function (response) {
-                console.log(response);
+                $("#comment").val(JSON.stringify(response));
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);
@@ -178,12 +200,13 @@
         })
     });
     $("#getXML").click(function(){
-        alert("xml tıklandı");
         $.ajax({
-            url: "test.php",
-            type: "get",
+            url: "/agProgramlama/getAll",
+            type: "GET",
+            dataType:'json',
+            contentType: "application/json; charset=utf-8",
             success: function (response) {
-                console.log(response);
+                $("#comment").val(objectToXml(response));
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);
