@@ -20,7 +20,7 @@
                   <form>
                       <h1>Reklam Ekle</h1>
                       <div>
-                          <input type="text" width="60" class="form-control" id="advertisementName" placeholder="Reklam Adı" required/>
+                          <input type="text" class="form-control" id="advertisementName" placeholder="Reklam Adı" required/>
                       </div>
                       </br>
                       <div>
@@ -28,7 +28,7 @@
                       </div>
                       </br>
                       <div>
-                          <input type="text" class="form-control" id="durationTime" placeholder="Reklam Süresi" required/>
+                          <label>Reklam Süresi:<input type="time" class="form-control" id="time"  required/></label>
                       </div>
                       </br>
                       <div>
@@ -37,11 +37,25 @@
                           <label>
                               <input type="checkbox" class="radio" value="1" id="video" name="fooby[1][]"/>Video</label>
                       </div>
+                  </br>
+
+                      <div>
+                          <input type="file" class="form-control" id="file" placeholder="Dosya" required/>
+                      </div>
+                      <div>
+                          <label>Kadın:<input type="radio" id="women" name="Kadın" required/></label>
+                      </div>
+                      <div>
+                          <label>Erkek:<input type="radio" id="men" name="Erkek" required/></label>
+                      </div>
+                      <div>
+                          <label>Çocuk:<input type="radio" id="child" name="Çocuk" required/></label>
+                      </div>
                       </br>
                       <div>
                           <a class="btn btn-default submit" id="addButonAd">Ekle</a>
+                          <a class="btn btn-default submit" id="closeButton">İptal</a>
                       </div>
-
                       <div class="clearfix"></div>
 
                       <div class="separator">
@@ -76,6 +90,10 @@
         } else {
             $box.prop("checked", false);
         }
+    });
+    $("#registerButton").click(function (e) {
+
+
     });
 
 /*

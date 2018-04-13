@@ -11,10 +11,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MainController {
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
-    public String index(){return "register";}
+    public String index(){return "index1";}
 
     @GetMapping("/login")
     public String login(){return "login";}
+
+    @GetMapping("/reklam")
+    public String form(){return "form";}
+
+    @GetMapping("/kategori")
+    public String index2(){return "category";}
 
     @GetMapping("/all")
     public String hello(){
