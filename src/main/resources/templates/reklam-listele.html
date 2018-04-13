@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<head th:replace="LayoutDefault::head">
+    <title>Reklam Ekleme</title>
+</head>
+
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div th:replace="LayoutDefault::layout"></div>
+
+    </div>
+    <div class="right_col" role="main">
+      <section>
+          <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Şirket Adı</th>
+                        <th>Oynatma Süresi</th>
+                        <th>Reklam Adı</th>
+                        <th>Reklam</th>
+                        <th>Oluşturulma Tarihi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="advertisement : ${advertisement}">
+                        <td th:text="${advertisement.id}"></td>
+                        <td th:text="${advertisement.corporation_Name}"></td>
+                        <td th:text="${advertisement.durationTime}"></td>
+                        <td th:text="${advertisement.advertisement_Name}"></td>
+                        <td th:text="${advertisement.photo}"></td>
+                        <td th:text="${advertisement.created_at}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+              </div>
+          </div>
+      </section>
+    </div>
+
+
+</div>
+<div th:replace="LayoutDefault::js"></div>
+
+
+<script>
+    $("input:checkbox").on('click', function() {
+        var $box = $(this);
+        if ($box.is(":checked")) {
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+        } else {
+            $box.prop("checked", false);
+        }
+    });
+
+    $("#add").click(function () {
+        console.log("clicked");
+        $.ajax({
+            url: "/advertisement/addAdvertisement",
+            method: "POST",
+            data: $('#form').serialize(),
+            dataType:'json',
+            success: function (response) {
+                console.log(response);
+                alert("Kayıt başarılı.");
+                window.location.href="/";
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+
+
+        });
+    })
+</script>
+
+</body>
+</html>
