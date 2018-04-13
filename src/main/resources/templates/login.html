@@ -22,17 +22,17 @@
     <div class="login_wrapper">
         <div class="animate form login_form">
             <section class="login_content">
-                <form>
+                <form action="/login" method="POST" name="f">
                     <h1>Giriş Yap</h1>
                     <div>
-                        <input type="text" class="form-control" placeholder="Kullanıcı Adı" required/>
+                        <input type="text" class="form-control" placeholder="Kullanıcı Adı" name="username" required/>
                     </div>
 
                     <div>
-                        <input type="password" class="form-control" placeholder="Şifre" required/>
+                        <input type="password" class="form-control" placeholder="Şifre" name="password" required/>
                     </div>
                     <div>
-                        <a class="btn btn-default submit" id="loginButton">Giriş Yap</a>
+                        <input class="btn btn-default submit" type="submit" value="Login" id="loginButton"/>
                         <a class="reset_pass" href="#">Şifrenizi mi unuttunuz?</a>
                     </div>
 
@@ -42,7 +42,12 @@
                         <p class="change_link">Yeni misin?
                             <a href="#signup" class="to_register"> Üye ol </a>
                         </p>
-
+                        <div th:if="${param.error}">
+                            Invalid username and password.
+                        </div>
+                        <div th:if="${param.logout}">
+                            You have been logged out.
+                        </div>
                         <div class="clearfix"></div>
                         <br />
 
@@ -57,28 +62,28 @@
 
         <div id="register" class="animate form registration_form">
             <section class="login_content">
-                <form>
+                <form action="addUser" method="POST" name="registrationForm" id="form">
                     <h1>Üye Ol</h1>
                     <div>
-                        <input type="text" class="form-control" id="name" placeholder="İsim" required/>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="İsim" required/>
                     </div>
                     <div>
-                        <input type="text" class="form-control" id="surname" placeholder="Soyisim" required/>
+                        <input type="text" class="form-control" id="surname" name="surname" placeholder="Soyisim" required/>
                     </div>
                     <div>
-                        <input type="text" class="form-control" id="username" placeholder="Kullanıcı Adı" required/>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Kullanıcı Adı" required/>
                     </div>
                     <div>
-                        <input type="email" class="form-control" id="email" placeholder="E-mail" required/>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required/>
                     </div>
                     <div>
-                        <input type="password" class="form-control" id="password" placeholder="Şifre" required/>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Şifre" required/>
                     </div>
                     <div>
                         <input type="password" class="form-control" id="password2" placeholder="Şifre tekrar" required/>
                     </div>
                     <div>
-                        <a class="btn btn-default submit" id="registerButton" >Gönder</a>
+                        <a class="btn btn-default submit" type="submit" id="registerButton" >Gönder</a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -113,21 +118,39 @@
 
 <script>
     $("#registerButton").click(function (e) {
+        console.log("asd");
         var password=$("#password").val();
         var password2=$("#password2").val();
         if(password===password2) {
-            var name = $("#name").val();
-            var surname = $("#surname").val();
-            var username = $("#username").val();
-            var email = $("email").val();
+//            var name = $("#name").val();
+//            var surname = $("#surname").val();
+//            var username = $("#username").val();
+//            var email = $("#email").val();
 
-            var obj = '{'
-                +'"name" : '+name+','
-                +'"surname" : '+surname+','
-                +'"name" : '+name+','
-                +'"name" : '+name+','
-                +'"name" : '+name+','
-                +'}';
+            var json = {};
+            json["name"] = name;
+            json["surname"] = surname;
+            json["username"] = username;
+            json["email"] = email;
+            json["password"] = password;
+            console.log(JSON.stringify(json));
+            $.ajax({
+                url: "/users/addUser",
+                method: "POST",
+                data: $('#form').serialize(),
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response);
+                    alert("Kayıt başarılı.");
+                    window.location.href="/";
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+
+
+            });
 
         }else{
             alert("Parolalar uyuşmuyor.");

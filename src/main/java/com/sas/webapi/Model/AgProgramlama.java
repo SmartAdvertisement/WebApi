@@ -1,33 +1,34 @@
 package com.sas.webapi.Model;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Created by Pınar Köroğlu on 4.04.2018.
- */
+import javax.persistence.*;
+import java.io.Serializable;
+
 @Entity
-@Table(name="AgProgramlama")
-public class AgProgramlama  {
+@Table(name="ag_programlama")
+public class AgProgramlama implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="agID")
+    @Column(name="agid")
     private Integer agID;
 
-    @Column(name="dersinKodu")
-    private Integer dersinKodu;
+    @JsonProperty("dersin_kodu")
+    @Column(name="dersin_kodu")
+    private String dersinKodu;
 
-    @Column(name="dersinAdi")
+    @JsonProperty("dersin_adi")
+    @Column(name="dersin_adi")
     private String dersinAdi;
 
-    @Column(name="dersinİcerigi")
-    private String dersinİcerigi;
+    @JsonProperty("dersin_icerigi")
+    @Column(name="dersin_icerigi")
+    private String dersinIcerigi;
 
-    public AgProgramlama(Integer dersinKodu,String dersinAdi,String dersinİcerigi){
-        this.dersinAdi=dersinAdi;
-        this.dersinKodu=dersinKodu;
-        this.dersinİcerigi=dersinİcerigi;
+    public AgProgramlama(){
     }
+
     public Integer getAgID() {
         return agID;
     }
@@ -36,11 +37,11 @@ public class AgProgramlama  {
         this.agID = agID;
     }
 
-    public Integer getDersinKodu() {
+    public String getDersinKodu() {
         return dersinKodu;
     }
 
-    public void setDersinKodu(Integer dersinKodu) {
+    public void setDersinKodu(String dersinKodu) {
         this.dersinKodu = dersinKodu;
     }
 
@@ -52,11 +53,11 @@ public class AgProgramlama  {
         this.dersinAdi = dersinAdi;
     }
 
-    public String getDersinİcerigi() {
-        return dersinİcerigi;
+    public String getDersinIcerigi() {
+        return dersinIcerigi;
     }
 
-    public void setDersinİcerigi(String dersinİcerigi) {
-        this.dersinİcerigi = dersinİcerigi;
+    public void setDersinIcerigi(String dersinIcerigi) {
+        this.dersinIcerigi = dersinIcerigi;
     }
 }

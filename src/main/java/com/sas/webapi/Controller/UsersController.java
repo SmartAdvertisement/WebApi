@@ -8,10 +8,12 @@ import com.sas.webapi.Model.Users;
 import com.sas.webapi.Model.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URLDecoder;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -43,11 +45,11 @@ public class UsersController {
     }
 
     @ResponseBody
-    @RequestMapping(value="/signup",method= RequestMethod.POST)
+    @PostMapping(value = "/addUser", produces = { MediaType.APPLICATION_JSON_VALUE } ,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @JsonDeserialize(as = Users.class)
-    public ResponseEntity addUser(@RequestBody String jsonUser){
+    public ResponseEntity addUser(@ModelAttribute Users user){
         try{
-            Users user = new ObjectMapper().readValue(jsonUser,Users.class);
+     //       Users user = new ObjectMapper().readValue(jsonUser,Users.class);
             user.setActive(1);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             Roles userRole = roleRepository.findRolesById(1);

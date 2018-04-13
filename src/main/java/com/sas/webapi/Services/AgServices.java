@@ -10,9 +10,6 @@ import org.springframework.stereotype.Service;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
-/**
- * Created by Pınar Köroğlu on 4.04.2018.
- */
 @Service
 public class AgServices {
 
@@ -21,17 +18,11 @@ public class AgServices {
 
     public List<AgProgramlama> getAll() {
         return this.agRepository.findAll();
+
     }
 
-    public void update(AgProgramlama agProgramlama,Integer ID) {
-        boolean exist = agRepository.existsById(ID);
-        if (exist) {
-            delete(ID);
-            save(agProgramlama);
-
-        } else {
-            save(agProgramlama);
-        }
+    public void update(AgProgramlama agProgramlama) {
+        save(agProgramlama);
     }
 
     public void delete(Integer ID) {
@@ -39,7 +30,12 @@ public class AgServices {
     }
 
     public void save(AgProgramlama agProgramlama) {
-        this.agRepository.save(agProgramlama);
+        try{
+            this.agRepository.save(agProgramlama);
+        }catch(Exception e){
+            System.out.print(e);
+        }
+
     }
 
 
