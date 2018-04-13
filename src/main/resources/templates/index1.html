@@ -17,29 +17,38 @@
       <section>
           <div class="row">
               <div class="col-md-8 col-md-offset-2">
-                  <form>
+                  <form action="advertisement/addAdvertisement" method="POST" name="form" id="form">
                       <h1>Reklam Ekle</h1>
                       <div>
-                          <input type="text" width="60" class="form-control" id="advertisementName" placeholder="Reklam Adı" required/>
+                          <input type="text" name="advertisement_Name" width="60" class="form-control" id="advertisementName" placeholder="Reklam Adı" required/>
                       </div>
-                      </br>
+                      <br/>
                       <div>
-                          <input type="text" class="form-control" id="corporationTime" placeholder="Şirket Adı" required/>
+                          <input type="text" name="corporation_Name" class="form-control" id="corporationName" placeholder="Şirket Adı" required/>
                       </div>
-                      </br>
+                      <br/>
                       <div>
-                          <input type="text" class="form-control" id="durationTime" placeholder="Reklam Süresi" required/>
+                          <input type="text" name="advertisementCategory" class="form-control" id="advertisementCategory" placeholder="Kategori" required/>
                       </div>
-                      </br>
+                      <div>
+                          <input type="text" name="gender" class="form-control" id="gender" placeholder="Cinsiyet" required/>
+                      </div>
+                      <div>
+                          <input type="text" name="durationTime" class="form-control" id="durationTime" placeholder="Reklam Süresi" required/>
+                      </div>
+                      <br/>
                       <div>
                           <label>
-                              <input type="checkbox" class="radio" value="1" id="photo" name="fooby[1][]" />Fotoğraf</label>
+                              <input type="checkbox" class="radio" value="1" id="photo"  />Fotoğraf</label>
                           <label>
-                              <input type="checkbox" class="radio" value="1" id="video" name="fooby[1][]"/>Video</label>
+                              <input type="checkbox" class="radio" value="1" id="video"/>Video</label>
                       </div>
-                      </br>
                       <div>
-                          <a class="btn btn-default submit" id="addButonAd">Ekle</a>
+                          <input type="file" name="photo" class="form-control" required/>
+                      </div>
+                      <br/>
+                      <div>
+                          <input class="btn btn-default submit" value="Ekle" type="submit" id="add" />
                       </div>
 
                       <div class="clearfix"></div>
@@ -54,8 +63,9 @@
                               <p>©2018 All Rights Reserved.</p>
                           </div>
                       </div>
-                  </form>
 
+                  </form>
+<div id="error"></div>
               </div>
           </div>
       </section>
@@ -78,20 +88,26 @@
         }
     });
 
-/*
-    $("#registerButton").click(function (e) {
+    $("#add").click(function () {
+        console.log("clicked");
+        $.ajax({
+            url: "/advertisement/addAdvertisement",
+            method: "POST",
+            data: $('#form').serialize(),
+            dataType:'json',
+            success: function (response) {
+                console.log(response);
+                alert("Kayıt başarılı.");
+                window.location.href="/";
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
 
 
-        var advertisementName = $("#advertisementName").val();
-        var corporationTime = $("#corporationTime").val();
-        var durationTime = $("#durationTime").val();
-
-        if(advertisementName!=""&&corporationTime!=""&&durationTime!=""){
-            console.log("basarılı");
-            return true;
-        }
-        else return false;
-    });*/
+        });
+    })
 </script>
 
 </body>

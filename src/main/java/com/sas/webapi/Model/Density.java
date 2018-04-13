@@ -2,7 +2,6 @@ package com.sas.webapi.Model;
 
 
 import javax.persistence.*;
-import java.text.DecimalFormat;
 import java.util.Date;
 
 /**

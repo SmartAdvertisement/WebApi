@@ -1,13 +1,16 @@
 package com.sas.webapi.Controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.sas.webapi.Model.AdvertisementCategory;
+import com.sas.webapi.Model.Users;
 import com.sas.webapi.Repository.CategoryRepository;
 import com.sas.webapi.Services.AdvertisementServices;
 import com.sas.webapi.Model.Advertisement;
 import com.sas.webapi.Services.CategoryServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,10 +34,10 @@ public class AdvertisementController {
     }
 
     @ResponseBody
-    @RequestMapping(method= RequestMethod.POST)
-    public ResponseEntity addAdvertisement(@RequestBody String jsonAdvertisement){
+    @PostMapping(value = "/addAdvertisement", produces = { MediaType.APPLICATION_JSON_VALUE } ,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public ResponseEntity addAdvertisement(@ModelAttribute Advertisement advertisement){
         try{
-            Advertisement advertisement = new ObjectMapper().readValue(jsonAdvertisement,Advertisement.class);
+           // Advertisement advertisement = new ObjectMapper().readValue(jsonAdvertisement,Advertisement.class);
             advertisement.setDurationTime(1);
             AdvertisementCategory category = categoryRepository.findRolesById(1);
             advertisement.setAdvertisementCategory(category);

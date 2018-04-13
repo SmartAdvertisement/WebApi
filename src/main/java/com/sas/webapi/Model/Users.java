@@ -1,6 +1,8 @@
 package com.sas.webapi.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -15,21 +17,28 @@ public class Users implements Serializable {
     @Column(name="user_id")
     private Integer id;
 
+    @JsonProperty("name")
     @Column(name="name")
     private String name;
 
+    @JsonProperty("surname")
     @Column(name="surname")
     private String surname;
 
+    @JsonProperty("username")
     @Column(name="username")
     private String username;
 
+    @JsonProperty("password")
     @Column(name="password")
     private String password;
 
+    @JsonProperty("email")
     @Column(name="email")
     private String email;
 
+
+    @JsonProperty("active")
     @Column(name="active")
     private int active;
 

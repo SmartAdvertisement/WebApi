@@ -22,7 +22,6 @@ public interface UsersRepository extends JpaRepository<Users,Integer>{
     @Query("SELECT u FROM Users u WHERE u.id = :id")
     Users findUsersById(@Param("id") int id);
 
-
     @Transactional
     @Modifying
     @Query("DELETE FROM Users u WHERE u.username = :username")

@@ -2,10 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="LayoutDefault">
-<head>
-    <title>Dashboard</title>
+<head th:replace="LayoutDefault::head">
+    <title>Reklam Ekleme</title>
 </head>
-
 <section layout:fragment="content">
     <div class="">
         <div class="page-title">
@@ -1041,5 +1040,6 @@
             </div>
         </div>
     </div>
+    <div th:replace="LayoutDefault::js"></div>
 </section>
 </html>
