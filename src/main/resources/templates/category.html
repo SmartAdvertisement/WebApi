@@ -15,132 +15,68 @@
     </div>
     <div class="right_col" role="main">
         <section layout:fragment="content">
-            <div class="">
-                <div class="page-title">
-                    <div class="title_left">
-                        <h3>Kategori</h3>
-                    </div>
+            <div class="col-md-6 col-md-offset-3">
+                <div class="x_panel">
+                    <h2>Kategori Ekle</h2>
 
-                    <div class="title_right">
-                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
-                                <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                            </div>
-                        </div>
+                    <hr/>
+                    <div class="x_content">
+                        <form id="demo-form" data-parsley-validate>
+                            <label>Kategori Adı * :</label>
+                            <input type="text" id="categoryName" class="form-control" name="categoryname" required />
+                            <br/>
+                            <br/>
+                            <label>Cinsiyet *:</label>
+                            <p>
+                                Erkek:
+                                <input type="radio" class="flat" name="gender" id="erkek" value="1" checked="" required /> Kadın:
+                                <input type="radio" class="flat" name="gender" id="kadin" value="2" />Çoçuk:
+                                <input type="radio" class="flat" name="gender" id="cocuk" value="3" />
+                            </p>
+                            <br/>
+                        </form>
+                        <button type="submit" id="save" class="btn btn-success" style="float:right;">Kaydet</button>
+
                     </div>
+                    <!-- end form for validations -->
                 </div>
-                <div class="clearfix"></div>
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="x_panel">
-                            <div class="x_title">
-                                <h2>Kategori Ekleme</h2>
-                                <ul class="nav navbar-right panel_toolbox">
-                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                    </li>
-                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="x_content">
-                                <br />
-                                <div class="x_content">
-                                    <br />
-                                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                <div class="x_panel">
+                    <h2>Kategori Listele</h2>
 
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="categoryName">Kategori Adı <span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" id="categoryName" required="required" class="form-control col-md-7 col-xs-12">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                        <div class="row">
-
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="women">Cinsiyet <span class="required">*</span>
-                                                </label>
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="women">Kadın
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="radio" checked="" value="option1" id="women" name="optionsRadios2">
-                                                </div>
-
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="men">Erkek
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="radio" checked="" value="option2" id="men" name="optionsRadios2">
-                                                </div>
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="children">
-                                                    Çocuk: <input type="radio" checked="" value="option2" id="children" name="optionsRadios2">
-                                                </label>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="ln_solid"></div>
-                                        <div class="form-group">
-                                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                                <button class="btn btn-primary" id="cancelButton" type="button">İptal</button>
-                                                <button type="submit" id="saveButton" class="btn btn-success">Seç</button>
-
-                                            </div>
-                                        </div>
-
-
-                                </div>
-                            </div>
-                        </div>
+                    <hr/>
+                    <div class="x_content">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Kategori Adı</th>
+                                <th>Cinsiyet</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="category : ${category}">
+                                <td th:text="${category.id}"></td>
+                                <td th:text="${category.categoryName}"></td>
+                                <td th:text="${category.gender}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
+
+
+                    <br/><br/>
                 </div>
-                <div class="row">
-                    <div class="col-md-6 col-xs-12">
-                        <div class="x_panel">
-                            <div class="x_title">
-                                <h2>Kategori Listeleme</h2>
-                                <ul class="nav navbar-right panel_toolbox">
-                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                    </li>
-
-                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
+                <div class="x_panel">
+                    <div class="x_content">
+                            <div style="text-align: center">
+                                <h1><i class="fa fa-paw"></i> Smart Advertisement System</h1>
+                                <p>©2018 All Rights Reserved.</p>
                             </div>
-                            <div class="x_content">
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Kategori Seçimi</label>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <select class="select2_single form-control" tabindex="-1">
-                                            <option></option>
-                                            <option value="AK">Araba</option>
-                                            <option value="HI">Ev</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+                    <br/><br/>
 
-                            <div class="ln_solid"></div>
-                            <div class="form-group">
-                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <button class="btn btn-primary" type="button">İptal</button>
-                                    <button type="submit" class="btn btn-success">Ekle</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        </div>
-
-                    </div>
-
-                        </div>
-
-            </form>
-
+                </div>
+            </div>
+            </div>
         </section>
     </div>
 
@@ -154,6 +90,32 @@ $("#cancelButton").click( function (){
     $("#categoryName").val('');
 
 });
+
+$("#save").click(function(){
+    var category = $("#categoryName").val();
+    var gender = $(".flat").val();
+
+    var json = {};
+    json.categoryName = category;
+    json.gender = gender;
+
+    $.ajax({
+        url: "/category/add",
+        type: "POST",
+        dataType:'json',
+        data: JSON.stringify(json),
+        contentType: "application/json; charset=utf-8",
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+        }
+
+    })
+})
+
+
 </script>
 
 </body>

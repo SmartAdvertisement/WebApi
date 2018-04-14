@@ -1,7 +1,9 @@
 package com.sas.webapi.Controller;
 
+import com.sas.webapi.Model.AdvertisementCategory;
 import com.sas.webapi.Services.AdvertisementServices;
 import com.sas.webapi.Services.AgServices;
+import com.sas.webapi.Services.CategoryServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,9 @@ public class MainController {
 
     @Autowired
     private AdvertisementServices advertisementServices;
+
+    @Autowired
+    private CategoryServices categoryServices;
 
     @GetMapping("/agprg")
     public String agprg(Model model){
@@ -45,8 +50,29 @@ public class MainController {
         return "reklam-listele";
     }
 
-    @RequestMapping(value = "/",method = RequestMethod.GET)
-    public String index(){return "index1";}
+    @GetMapping("/reklam-ekle")
+    public String addAdvertisement(Model model){
+        try{
+            model.addAttribute("category",categoryServices.getAll());
+        }catch(Exception e)
+        {
+            System.out.print(e);
+        }
+
+        return "reklam-ekle";
+    }
+
+    @GetMapping("/kategoriler")
+    public String categories(Model model){
+        try{
+            model.addAttribute("category",categoryServices.getAll());
+        }catch(Exception e)
+        {
+            System.out.print(e);
+        }
+
+        return "category";
+    }
 
     @RequestMapping(value = "/form",method = RequestMethod.GET)
     public String form(){return "form";}

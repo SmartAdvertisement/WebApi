@@ -15,36 +15,51 @@
     </div>
     <div class="right_col" role="main">
       <section>
-          <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Şirket Adı</th>
-                        <th>Oynatma Süresi</th>
-                        <th>Reklam Adı</th>
-                        <th>Reklam</th>
-                        <th>Oluşturulma Tarihi</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="advertisement : ${advertisement}">
-                        <td th:text="${advertisement.id}"></td>
-                        <td th:text="${advertisement.corporation_Name}"></td>
-                        <td th:text="${advertisement.durationTime}"></td>
-                        <td th:text="${advertisement.advertisement_Name}"></td>
-                        <td th:text="${advertisement.photo}"></td>
-                        <td th:text="${advertisement.created_at}"></td>
-                    </tr>
-                    </tbody>
-                </table>
+
+          <div class="col-md-6 col-md-offset-3">
+              <div class="x_panel">
+                  <h2>Reklam Listele</h2>
+
+                  <hr/>
+                  <div class="x_content">
+                      <table class="table">
+                          <thead>
+                          <tr>
+                              <th>#</th>
+                              <th>Şirket Adı</th>
+                              <th>Oynatma Süresi</th>
+                              <th>Reklam Adı</th>
+                              <th>Reklam</th>
+                              <th>Oluşturulma Tarihi</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr th:each="advertisement : ${advertisement}">
+                              <td th:text="${advertisement.id}"></td>
+                              <td th:text="${advertisement.corporation_Name}"></td>
+                              <td th:text="${advertisement.durationTime}"></td>
+                              <td th:text="${advertisement.advertisement_Name}"></td>
+                              <td th:text="${advertisement.photo}"></td>
+                              <td th:text="${advertisement.created_at}"></td>
+                          </tr>
+                          </tbody>
+                      </table>
+
+                  </div>
+              </div>
+              <div class="x_panel">
+                  <div class="x_content">
+                      <div style="text-align: center">
+                          <h1><i class="fa fa-paw"></i> Smart Advertisement System</h1>
+                          <p>©2018 All Rights Reserved.</p>
+                      </div>
+                      <br/><br/>
+
+                  </div>
               </div>
           </div>
       </section>
-    </div>
-
-
+</div>
 </div>
 <div th:replace="LayoutDefault::js"></div>
 

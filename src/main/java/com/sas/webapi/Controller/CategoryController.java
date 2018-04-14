@@ -1,14 +1,21 @@
 package com.sas.webapi.Controller;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sas.webapi.Model.Gender;
 import com.sas.webapi.Services.CategoryServices;
 import com.sas.webapi.Model.AdvertisementCategory;
+import com.sas.webapi.Services.GenderServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityManager;
+import javax.websocket.Session;
+import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Pınar Köroğlu on 10.03.2018.
@@ -20,16 +27,26 @@ public class CategoryController {
     @Autowired
     private CategoryServices categoryServices;
 
+    @Autowired
+    private GenderServices genderServices;
+
     @RequestMapping
     public List<AdvertisementCategory> getAll() {
         return this.categoryServices.getAll();
     }
 
     @ResponseBody
-    @RequestMapping(method= RequestMethod.POST)
+    @RequestMapping(value="/add",method= RequestMethod.POST)
     public ResponseEntity addAdvertisementCategory(@RequestBody String jsonCategory){
+        Session session = null;
+        Gender gender = null;
         try{
-            AdvertisementCategory category = new ObjectMapper().readValue(jsonCategory,AdvertisementCategory.class);
+            ObjectMapper mapper = new ObjectMapper();
+            AdvertisementCategory category = new AdvertisementCategory();
+            Map<String, Object> carMap = mapper.readValue(jsonCategory, new TypeReference<Map<String, Object>>() {});
+            gender = genderServices.getById(Integer.parseInt(carMap.get("gender").toString()));
+            category.setGender(gender);
+            category.setCategoryName(carMap.get("categoryName").toString());
             this.categoryServices.save(category);
 
         }catch (Exception e){

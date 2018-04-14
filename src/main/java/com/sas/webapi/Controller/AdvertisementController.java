@@ -34,13 +34,11 @@ public class AdvertisementController {
     }
 
     @ResponseBody
-    @PostMapping(value = "/addAdvertisement", produces = { MediaType.APPLICATION_JSON_VALUE } ,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public ResponseEntity addAdvertisement(@ModelAttribute Advertisement advertisement){
+    @RequestMapping(value="/add",method= RequestMethod.POST)
+    @JsonDeserialize(as=Advertisement.class)
+    public ResponseEntity addAdvertisement(@RequestBody String jsonAgRepository){
         try{
-           // Advertisement advertisement = new ObjectMapper().readValue(jsonAdvertisement,Advertisement.class);
-            advertisement.setDurationTime(1);
-            AdvertisementCategory category = categoryRepository.findRolesById(1);
-            advertisement.setAdvertisementCategory(category);
+            Advertisement advertisement = new ObjectMapper().readValue(jsonAgRepository,Advertisement.class);
             this.advertisementService.save(advertisement);
 
         }catch (Exception e){
