@@ -82,44 +82,22 @@
                                                 <input type="text" id="durationTime" pattern="\d*" name="durationTime" required="required" class="form-control col-md-7 col-xs-12">
                                             </div>
                                         </div>
+                                        <br/>
                                         <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="photo">Fotoğraf <span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="radio" checked="" value="option1" id="photo" name="optionsRadios">
-                                            </div>
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="video">Video <span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="radio" checked="" value="option2" id="video" name="optionsRadios">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="durationTime">Reklamı yükleyin: <span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="file"  id="fileUpload" name="file" >
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <label>Reklam Tipi *:</label>
+                                        <p>
+                                            Resim:
+                                            <input type="radio" class="tip" name="gender" id="resim"  checked="" required /> Video:
+                                            <input type="radio" class="tip" name="gender" id="video"  />
+                                        </p>
+
+                                        <br/>
+                                        <input type="file" class="form-control" id="file" onchange="readURL(this)" placeholder="Dosya" required/>
+                                        <br/>
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="women">Kadın
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="radio" checked="" value="option1" id="women" name="optionsRadios2">
-                                                </div>
-
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="men">Erkek
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="radio" checked="" value="option2" id="men" name="optionsRadios2">
-                                                </div>
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="children">
-                                                    Çocuk: <input type="radio" checked="" value="option2" id="children" name="optionsRadios2">
-                                                </label>
-                                            </div>
-                                        </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Kategori Seçimi</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
@@ -130,6 +108,16 @@
                                                 </select>
                                             </div>
                                         </div>
+
+                                        <br/>
+                                        <label>Cinsiyet *:</label>
+                                        <p>
+                                            Kadın:
+                                            <input type="radio" class="flat" name="gender" id="erkek" value="1" checked="" required /> Erkek:
+                                            <input type="radio" class="flat" name="gender" id="kadin" value="2" />Çoçuk:
+                                            <input type="radio" class="flat" name="gender" id="cocuk" value="3" />
+                                        </p>
+                                        <br/>
 
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
