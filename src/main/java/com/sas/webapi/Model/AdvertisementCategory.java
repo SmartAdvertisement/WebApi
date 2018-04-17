@@ -1,13 +1,7 @@
 package com.sas.webapi.Model;
 
-import com.sas.webapi.Model.Gender;
-
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 
-/**
- * Created by Pınar Köroğlu on 4.03.2018.
- */
 @Entity
 @Table(name="advertisementcategory")
 public class AdvertisementCategory {

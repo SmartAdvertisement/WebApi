@@ -13,8 +13,8 @@ import javax.transaction.Transactional;
  */
 public interface CategoryRepository extends JpaRepository<AdvertisementCategory,Integer> {
 
-    @Query("SELECT r FROM Roles r WHERE r.id = :id")
-    AdvertisementCategory findRolesById(@Param("id") int id);
+    @Query("SELECT r FROM AdvertisementCategory r WHERE r.id = :id")
+    AdvertisementCategory findAdvertisementCategoriesById(@Param("id") int id);
 
     @Query("SELECT u FROM AdvertisementCategory u WHERE u.categoryName = :categoryName")
     AdvertisementCategory findCategoryByCategoryName(@Param("categoryName") String categoryName);

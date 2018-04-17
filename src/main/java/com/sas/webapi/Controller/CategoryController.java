@@ -38,8 +38,7 @@ public class CategoryController {
     @ResponseBody
     @RequestMapping(value="/add",method= RequestMethod.POST)
     public ResponseEntity addAdvertisementCategory(@RequestBody String jsonCategory){
-        Session session = null;
-        Gender gender = null;
+        Gender gender;
         try{
             ObjectMapper mapper = new ObjectMapper();
             AdvertisementCategory category = new AdvertisementCategory();

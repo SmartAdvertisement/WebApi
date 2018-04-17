@@ -35,6 +35,9 @@ public class CategoryServices {
         this.categoryRepository.save(advertisementCategory);
     }
 
+    public AdvertisementCategory getById(int id ){
+        return this.categoryRepository.findAdvertisementCategoriesById(id);
+    }
     public void deleteById(int id) {
         this.categoryRepository.deleteById(id);
     }
