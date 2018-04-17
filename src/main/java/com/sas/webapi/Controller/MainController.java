@@ -20,30 +20,7 @@ public class MainController {
     @Autowired
     private AdvertisementServices advertisementServices;
 
-    @GetMapping("/agprogramlama")
-    public String agprg(Model model){
-        try{
-            model.addAttribute("ders",agServices.getAll());
-            System.out.print(agServices.getAll());
-        }catch(Exception e)
-        {
-            System.out.print(e);
-        }
 
-        return "index";
-    }
-    @GetMapping("/agprogramlama2")
-    public String agprg2(Model model){
-        try{
-            model.addAttribute("lessons",agServices.getAll());
-            System.out.print(agServices.getAll());
-        }catch(Exception e)
-        {
-            System.out.print(e);
-        }
-
-        return "ag";
-    }
     @GetMapping("/reklamListesi")
     public String advertisementList(Model model){
         try{
@@ -59,7 +36,7 @@ public class MainController {
     @RequestMapping(value = "/kategori",method = RequestMethod.GET)
     public String index(){return "category";}
 
-    @RequestMapping(value = "/reklam",method = RequestMethod.GET)
+    @RequestMapping(value = "/reklamEkle",method = RequestMethod.GET)
     public String reklamEkle(){return "reklam-ekle";}
 
     @GetMapping("/login")
@@ -69,7 +46,7 @@ public class MainController {
     public String form(){return "form";}
 
     @GetMapping("/")
-    public String index1(){return "index1";}
+    public String index1(){return "welcome";}
 
     @GetMapping("/all")
     public String hello(){
