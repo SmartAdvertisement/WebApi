@@ -39,7 +39,7 @@
                               <td th:text="${advertisement.corporation_Name}"></td>
                               <td th:text="${advertisement.durationTime}"></td>
                               <td th:text="${advertisement.advertisement_Name}"></td>
-                              <td th:text="${advertisement.photo}"></td>
+                              <td><img id="advertisementImg" th:src="${advertisement.photo}" width="100" height="100"></td>
                               <td th:text="${advertisement.created_at}"></td>
                           </tr>
                           </tbody>
@@ -62,7 +62,6 @@
 </div>
 </div>
 <div th:replace="LayoutDefault::js"></div>
-
 
 <script>
     $("input:checkbox").on('click', function() {
@@ -95,7 +94,14 @@
 
 
         });
-    })
+    });
+
+
+    function base64toImage(value){
+        var image = new Image();
+        image.src = value;
+        return image;
+    }
 </script>
 
 </body>
