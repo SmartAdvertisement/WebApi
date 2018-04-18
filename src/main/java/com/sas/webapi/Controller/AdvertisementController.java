@@ -16,7 +16,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -65,6 +69,22 @@ public class AdvertisementController {
         }
         return ResponseEntity.ok(HttpStatus.OK);
     }
+
+
+    @RequestMapping(value = "/uploadfile", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<Object> uploadFile(@RequestParam("uploadFile") MultipartFile file)throws IOException{
+        File convertFile = new File("C:\\uploaded-files\\"+file.getOriginalFilename());
+        convertFile.createNewFile();
+        FileOutputStream fout = new FileOutputStream(convertFile);
+        fout.write(file.getBytes());
+        fout.close();
+        return new ResponseEntity<>("File is uploaded successfully",HttpStatus.OK);
+    }
+
+
+    
+
 
     @RequestMapping(value = "/id/{id}", method = RequestMethod.DELETE)
     @ResponseBody

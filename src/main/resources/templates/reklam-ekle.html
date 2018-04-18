@@ -51,7 +51,7 @@
                           <input type="radio" class="tip" name="gender" id="resim" value="kadin" />
                       </p>
                       <br/>
-                      <input type="file" class="form-control" id="file" onchange="readURL(this)" placeholder="Dosya" required/>
+                      <input type="file" class="form-control" id="file" name="uploadFile" placeholder="Dosya" required/>
                       <br/>
                   </form>
                   <button type="submit" id="save" class="btn btn-success" style="float:right;">Kaydet</button>
@@ -79,6 +79,10 @@
 
 
 <script>
+    $(document).ready(function() {
+        $("#file").on("change", uploadFile);
+    });
+
     var advertisementName ="";
     var corporationName ="";
     var gender ="";
@@ -110,15 +114,21 @@
         json.advertisementCategory = category;
         json.durationTime = time;
         json.gender = gender;
-
+       // file = $("file");
+        var formData = new FormData();
+        formData.append("json",new Blob([JSON.stringify(json)],{type:"application/json"}));
+        formData.append("file",file);
         console.log(json);
         alert("wait");
         $.ajax({
             url: "/advertisement/add",
             type: "POST",
             dataType:'json',
-            data: JSON.stringify(json),
-            contentType: "application/json; charset=utf-8",
+            data: new FormData($("#demo-form")[0]),
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false,
+            cache: false,
             success: function (response) {
                 console.log(response);
             },
@@ -128,7 +138,30 @@
 
         })
     });
-    function readURL(input) {
+
+    function uploadFile(){
+            alert("wait");
+            $.ajax({
+                url: "/advertisement/uploadfile",
+                type: "POST",
+                dataType:'json',
+                data: new FormData($("#demo-form")[0]),
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function (response) {
+                    console.log(response);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+
+            })
+    }
+
+
+   /* function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
@@ -138,7 +171,7 @@
             };
             reader.readAsDataURL(input.files[0]);
         }
-    }
+    }*/
 </script>
 
 </body>
