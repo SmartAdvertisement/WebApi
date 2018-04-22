@@ -14,64 +14,64 @@
 
     </div>
     <div class="right_col" role="main">
-      <section>
-          <div class="col-md-6 col-md-offset-3">
-          <div class="x_panel">
-              <h2>Reklam Ekle</h2>
+        <section>
+            <div class="col-md-6 col-md-offset-3">
+                <div class="x_panel">
+                    <h2>Reklam Ekle</h2>
 
-              <hr/>
-              <div class="x_content">
-                  <form id="demo-form" data-parsley-validate>
-                      <label>Reklam Adı * :</label>
-                      <input type="text" id="advertisementName" class="form-control" name="fullname" required />
-                        <br/>
-                      <label>Şirket Adı * :</label>
-                      <input type="text" id="corporationName" class="form-control" name="email" data-parsley-trigger="change" required />
-                      <br/>
-                      <label>Cinsiyet *:</label>
-                      <p>
-                          Erkek:
-                          <input type="radio" class="flat" name="gender" id="erkek" value="1" checked="" required /> Kadın:
-                          <input type="radio" class="flat" name="gender" id="kadin" value="2" />Çoçuk:
-                          <input type="radio" class="flat" name="gender" id="cocuk" value="3" />
-                      </p>
-                      <br/>
-                       <label>Reklam Süresi(sn):<input type="number" class="form-control" id="time" min="10" max="59"  required/></label>
-                      <br/>
-                          <label for="categories">Reklam Kategorisi*:</label>
-                          <select id="categories" class="form-control" required>
-                              <option th:each="category : ${category}" th:value="${category.id}" th:text="${category.categoryName}">Default</option>
-                              <option value="1">set</option>
-                          </select>
-                      <br/>
-                      <label>Reklam Tipi *:</label>
-                      <p>
-                          Video:
-                          <input type="radio" class="tip" name="gender" id="video" value="erkek" checked="" required /> Resim:
-                          <input type="radio" class="tip" name="gender" id="resim" value="kadin" />
-                      </p>
-                      <br/>
-                      <input type="file" class="form-control" id="file" name="uploadFile" placeholder="Dosya" required/>
-                      <br/>
-                  </form>
-                  <button type="submit" id="save" class="btn btn-success" style="float:right;">Kaydet</button>
+                    <hr/>
+                    <div class="x_content">
+                        <form id="demo-form" data-parsley-validate>
+                            <label>Reklam Adı * :</label>
+                            <input type="text" id="advertisementName" class="form-control" name="fullname" required />
+                            <br/>
+                            <label>Şirket Adı * :</label>
+                            <input type="text" id="corporationName" class="form-control" name="email" data-parsley-trigger="change" required />
+                            <br/>
+                            <label>Cinsiyet *:</label>
+                            <p>
+                                Erkek:
+                                <input type="radio" class="flat" name="gender" id="erkek" value="1" checked="" required /> Kadın:
+                                <input type="radio" class="flat" name="gender" id="kadin" value="2" />Çoçuk:
+                                <input type="radio" class="flat" name="gender" id="cocuk" value="3" />
+                            </p>
+                            <br/>
+                            <label>Reklam Süresi(sn):<input type="number" class="form-control" id="time" min="10" max="59"  required/></label>
+                            <br/>
+                            <label for="categories">Reklam Kategorisi*:</label>
+                            <select id="categories" class="form-control" required>
+                                <option th:each="category : ${category}" th:value="${category.id}" th:text="${category.categoryName}">Default</option>
+                                <option value="1">set</option>
+                            </select>
+                            <br/>
+                            <label>Reklam Tipi *:</label>
+                            <p>
+                                Video:
+                                <input type="radio" class="tip" name="gender" id="video" value="erkek" checked="" required /> Resim:
+                                <input type="radio" class="tip" name="gender" id="resim" value="kadin" />
+                            </p>
+                            <br/>
+                            <input type="file" class="form-control" id="file" name="uploadFile" placeholder="Dosya" required/>
+                            <br/>
+                        </form>
+                        <button type="submit" id="save2" class="btn btn-success" style="float:right;">Kaydet</button>
 
-              </div>
-                  <!-- end form for validations -->
-              <br/><br/>
-              </div>
-              <div class="x_panel">
-                  <div class="x_content">
-                      <div style="text-align: center">
-                          <h1><i class="fa fa-paw"></i> Smart Advertisement System</h1>
-                          <p>©2018 All Rights Reserved.</p>
-                      </div>
-                      <br/><br/>
+                    </div>
+                    <!-- end form for validations -->
+                    <br/><br/>
+                </div>
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div style="text-align: center">
+                            <h1><i class="fa fa-paw"></i> Smart Advertisement System</h1>
+                            <p>©2018 All Rights Reserved.</p>
+                        </div>
+                        <br/><br/>
 
-                  </div>
-              </div>
-          </div>
-      </section>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
 </div>
@@ -80,16 +80,15 @@
 
 <script>
     $(document).ready(function() {
-        $("#file").on("change", uploadFile);
+   //     $("#file").on("change", uploadFile);
     });
-
     var advertisementName ="";
     var corporationName ="";
     var gender ="";
     var time ="";
     var file ="";
     var category ="";
-        $("input:checkbox").on('click', function() {
+    $("input:checkbox").on('click', function() {
         var $box = $(this);
         if ($box.is(":checked")) {
             var group = "input:checkbox[name='" + $box.attr("name") + "']";
@@ -99,29 +98,59 @@
             $box.prop("checked", false);
         }
     });
-
     $("#save").click(function () {
         advertisementName =$("#advertisementName").val();
         corporationName = $("#corporationName").val();
         gender = $(".flat").val();
         time = $("#time").val();
         category =$("#categories").val();
-
         var json = {};
+        /*
         json.advertisement_Name = advertisementName;
         json.corporation_Name = corporationName;
         json.photo = file;
         json.advertisementCategory = category;
         json.durationTime = time;
-        json.gender = gender;
-       // file = $("file");
+        json.gender = gender;*/
+        // file = $("file");
+var deneme={'advertisement_Name':advertisementName}
+
         var formData = new FormData();
-        formData.append("json",new Blob([JSON.stringify(json)],{type:"application/json"}));
-        formData.append("file",file);
+        formData.append("json",new Blob([JSON.stringify({
+            'advertisement_Name': advertisementName,
+            'corporation_Name' : corporationName,
+            'photo' : file,
+            'advertisementCategory' : category,
+            'durationTime' : time,
+            'gender' : gender})],{type:"application/json"}));
+       // formData.append("file",file);
         console.log(json);
-        alert("wait");
+        console.log("formData"+formData.toString());
+        //  if($(file).val()!==""){
+      //      uploadFile();
+      //  }
+       // alert("wait");
         $.ajax({
-            url: "/advertisement/add",
+            url: "/advertisement/add2",
+            type: "POST",
+            dataType:'json',
+            data: JSON.stringify(formData),
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: undefined,
+            cache: false,
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        })
+    });
+    function uploadFile(){
+      //  alert("wait");
+        $.ajax({
+            url: "/advertisement/uploadfile",
             type: "POST",
             dataType:'json',
             data: new FormData($("#demo-form")[0]),
@@ -135,43 +164,50 @@
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);
             }
+        })
+    }
+
+    $("#save2").click(function () {
+        advertisementName =$("#advertisementName").val();
+        corporationName = $("#corporationName").val();
+        gender = $(".flat").val();
+        time = $("#time").val();
+        category =$("#categories").val();
+
+        var json = {};
+        json.advertisement_Name = advertisementName;
+        json.corporation_Name = corporationName;
+        json.photo = file;
+        json.advertisementCategory = category;
+        json.durationTime = time;
+        json.gender = gender;
+        console.log(json);
+        $.ajax({
+            url: "/advertisement/add",
+            type: "POST",
+            dataType:'json',
+            data: JSON.stringify(json),
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
 
         })
     });
-
-    function uploadFile(){
-            alert("wait");
-            $.ajax({
-                url: "/advertisement/uploadfile",
-                type: "POST",
-                dataType:'json',
-                data: new FormData($("#demo-form")[0]),
-                enctype: 'multipart/form-data',
-                processData: false,
-                contentType: false,
-                cache: false,
-                success: function (response) {
-                    console.log(response);
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus, errorThrown);
-                }
-
-            })
-    }
-
-
-   /* function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#falseinput').attr('src', e.target.result);
-                file = e.target.result;
-                $('#file').val(e.target.result);
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    }*/
+    /* function readURL(input) {
+     if (input.files && input.files[0]) {
+     var reader = new FileReader();
+     reader.onload = function (e) {
+     $('#falseinput').attr('src', e.target.result);
+     file = e.target.result;
+     $('#file').val(e.target.result);
+     };
+     reader.readAsDataURL(input.files[0]);
+     }
+     }*/
 </script>
 
 </body>

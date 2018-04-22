@@ -47,16 +47,15 @@ public class AdvertisementController {
     }
 
     @ResponseBody
-    @RequestMapping(value="/add",method= RequestMethod.POST)
-    @JsonDeserialize(as=Advertisement.class)
+    @RequestMapping(value="/add2",method= RequestMethod.POST)
     public ResponseEntity addAdvertisement(@RequestBody String json){
         try{
             AdvertisementCategory category;
             Advertisement advertisement = new Advertisement();
             ObjectMapper mapper = new ObjectMapper();
             Map<String, Object> objMap = mapper.readValue(json, new TypeReference<Map<String, Object>>() {});
-            category = categoryServices.getById(Integer.parseInt(objMap.get("advertisementCategory").toString()));
-            advertisement.setAdvertisementCategory(category);
+          //  category = categoryServices.getById(Integer.parseInt(objMap.get("advertisementCategory").toString()));
+        //    advertisement.setAdvertisementCategory(category);
             advertisement.setAdvertisement_Name(objMap.get("advertisement_Name").toString());
             advertisement.setCorporation_Name(objMap.get("corporation_Name").toString());
             advertisement.setPhoto(objMap.get("photo").toString());
@@ -83,7 +82,7 @@ public class AdvertisementController {
     }
 
 
-    
+
 
 
     @RequestMapping(value = "/id/{id}", method = RequestMethod.DELETE)
