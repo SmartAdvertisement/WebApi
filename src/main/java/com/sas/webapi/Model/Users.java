@@ -14,7 +14,7 @@ import java.util.Set;
 public class Users implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="user_id")
+    @Column(name="id")
     private Integer id;
 
     @JsonProperty("name")
