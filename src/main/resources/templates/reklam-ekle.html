@@ -51,7 +51,7 @@
                                 <input type="radio" name="type" class="tip"  id="photo" value="photo" />
                             </p>
                             <br/>
-                            <input type="file" class="form-control" id="file" name="uploadFile" placeholder="Dosya" required/>
+                            <input type="file" class="form-control" id="file" onchange="ValidateSingleInput(this)"  name="uploadFile" placeholder="Dosya" required/>
                             <br/>
                         </form>
                         <button type="submit" id="save" class="btn btn-success" style="float:right;">Kaydet</button>
@@ -79,6 +79,29 @@
 
 
 <script>
+    var _validFileExtensions = [".jpg", ".jpeg", ".bmp", ".gif", ".png",".mp4","wav"];
+    function ValidateSingleInput(oInput) {
+        if (oInput.type == "file") {
+            var sFileName = oInput.value;
+            if (sFileName.length > 0) {
+                var blnValid = false;
+                for (var j = 0; j < _validFileExtensions.length; j++) {
+                    var sCurExtension = _validFileExtensions[j];
+                    if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                        blnValid = true;
+                        break;
+                    }
+                }
+
+                if (!blnValid) {
+                    alert("Üzgünüz, " + sFileName + " dosyasının uzantısı geçerli değil, Geçerli uzantılar: " + _validFileExtensions.join(", "));
+                    oInput.value = "";
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
     $("input:checkbox").on('click', function() {
         var $box = $(this);
         if ($box.is(":checked")) {
