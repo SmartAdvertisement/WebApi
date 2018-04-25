@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:fragment="head">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -48,8 +48,11 @@
                             <img src="images/img.jpg" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
-                            <span>Welcome,</span>
-                            <h2>Berat Nakip</h2>
+                            <span>Hoşgeldiniz</span>
+                            <span sec:authorize="isAuthenticated()">
+                | Logged user: <span sec:authentication="name"></span> |
+                Roles: <span sec:authentication="principal.authorities"></span> |
+            </span>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -67,7 +70,7 @@
                                         <li><a href="/reklamListesi">Reklam Listele</a></li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-edit"></i> Kategori  <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-edit"></i> Kategori <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="/category">Kategori Ekle & Listele </a></li>
                                     </ul>
