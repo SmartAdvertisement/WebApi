@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -40,13 +41,15 @@ public class AdvertisementController {
     @Autowired
     private CategoryServices categoryServices;
 
+    @Autowired
+    private GenderServices genderServices;
 
     @RequestMapping
     public List<Advertisement> getAll() {
         return this.advertisementService.getAll();
     }
 
-    @ResponseBody
+  /*  @ResponseBody
     @RequestMapping(value="/add2",method= RequestMethod.POST)
     public ResponseEntity addAdvertisement(@RequestBody String json){
         try{
@@ -67,17 +70,36 @@ public class AdvertisementController {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return ResponseEntity.ok(HttpStatus.OK);
-    }
+    }*/
 
 
     @RequestMapping(value = "/uploadfile", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<Object> uploadFile(@RequestParam("uploadFile") MultipartFile file)throws IOException{
+    public ResponseEntity<?> uploadFile(@RequestParam("uploadFile") MultipartFile file,
+                                        @RequestParam("advertisementName") String advertisementName,
+                                        @RequestParam("corporationName") String corporationName,
+                                        @RequestParam("type") String type,
+                                        @RequestParam("durationTime") String durationTime,
+                                        @RequestParam("categoryName") String categoryName)throws IOException{
+        Advertisement advertisement = new Advertisement();
+        AdvertisementCategory category;
         File convertFile = new File("C:\\uploaded-files\\"+file.getOriginalFilename());
+        if(type.equals("video")){
+            advertisement.setVideo(convertFile.getPath());
+        }else if(type.equals("photo")){
+            advertisement.setPhoto(convertFile.getPath());
+        }
         convertFile.createNewFile();
         FileOutputStream fout = new FileOutputStream(convertFile);
         fout.write(file.getBytes());
         fout.close();
+
+        category = categoryServices.getById(Integer.parseInt(categoryName));
+        advertisement.setAdvertisement_Name(advertisementName);
+        advertisement.setDurationTime(Integer.parseInt(durationTime));
+        advertisement.setCorporation_Name(corporationName);
+        advertisement.setAdvertisementCategory(category);
+        this.advertisementService.save(advertisement);
         return new ResponseEntity<>("File is uploaded successfully",HttpStatus.OK);
     }
 
