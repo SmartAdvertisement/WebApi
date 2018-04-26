@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Created by Pınar Köroğlu on 4.04.2018.
- */
 @RestController
 @RequestMapping("/agProgramlama")
 public class AgController {
