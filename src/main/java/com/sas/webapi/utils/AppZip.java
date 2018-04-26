@@ -1,4 +1,4 @@
-package com.sas.webapi.Services;
+package com.sas.webapi.utils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -11,9 +11,11 @@ import java.util.zip.ZipOutputStream;
 public class AppZip
 {
 
+    private static final String home = System.getProperty("user.home");
+
     private List <String> fileList;
-    private static final String OUTPUT_ZIP_FILE = "C:\\Users\\qs-be\\Desktop\\Folder.zip";
-    private static final String SOURCE_FOLDER = "C:\\Users\\qs-be\\Desktop\\uploaded-files"; // SourceFolder path
+    private static final String OUTPUT_ZIP_FILE = home+"/Folder.zip";
+    private static final String SOURCE_FOLDER = home+"/uploaded-files"; // SourceFolder path
 
     public AppZip() {
         fileList = new ArrayList < String > ();
@@ -21,6 +23,7 @@ public class AppZip
     public void createZip(){
         generateFileList(new File(SOURCE_FOLDER));
         zipIt(OUTPUT_ZIP_FILE);
+        System.out.print(home);
     }
 
     public static void main(String[] args) {

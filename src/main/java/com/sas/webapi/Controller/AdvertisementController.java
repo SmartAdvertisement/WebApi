@@ -11,6 +11,7 @@ import com.sas.webapi.Services.AdvertisementServices;
 import com.sas.webapi.Model.Advertisement;
 import com.sas.webapi.Services.CategoryServices;
 import com.sas.webapi.Services.GenderServices;
+import com.sas.webapi.Services.PlaylistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -44,10 +45,14 @@ public class AdvertisementController {
     @Autowired
     private GenderServices genderServices;
 
+    @Autowired
+    private PlaylistService playlistService;
+
     @RequestMapping
     public List<Advertisement> getAll() {
         return this.advertisementService.getAll();
     }
+
 
 
     @RequestMapping(value = "/uploadfile", method = RequestMethod.POST)
@@ -77,8 +82,17 @@ public class AdvertisementController {
         advertisement.setCorporation_Name(corporationName);
         advertisement.setAdvertisementCategory(category);
         this.advertisementService.save(advertisement);
+
+
+        //Eğer save'de sıkıntı oluşmadıysa alt kısım çalışır
+        //Version değeri arttırılır.
+        playlistService.increaseVersion();
         return new ResponseEntity<>("File is uploaded successfully",HttpStatus.OK);
     }
+
+
+
+
 
     @RequestMapping(value = "/id/{id}", method = RequestMethod.DELETE)
     @ResponseBody
