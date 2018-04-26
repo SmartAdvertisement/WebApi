@@ -47,7 +47,16 @@ public class MainController {
     }
     @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "/category",method = RequestMethod.GET)
-    public String index(){return "category";}
+    public String index(Model model){
+        try{
+            model.addAttribute("categoryList",categoryServices.getAll());
+        }catch(Exception e)
+        {
+            System.out.print(e);
+        }
+
+        return "category";
+    }
 
     @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "/reklamEkle",method = RequestMethod.GET)
