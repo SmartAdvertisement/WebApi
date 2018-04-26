@@ -49,29 +49,6 @@ public class AdvertisementController {
         return this.advertisementService.getAll();
     }
 
-  /*  @ResponseBody
-    @RequestMapping(value="/add2",method= RequestMethod.POST)
-    public ResponseEntity addAdvertisement(@RequestBody String json){
-        try{
-            AdvertisementCategory category;
-            Advertisement advertisement = new Advertisement();
-            ObjectMapper mapper = new ObjectMapper();
-            Map<String, Object> objMap = mapper.readValue(json, new TypeReference<Map<String, Object>>() {});
-            category = categoryServices.getById(Integer.parseInt(objMap.get("advertisementCategory").toString()));
-            advertisement.setAdvertisementCategory(category);
-            advertisement.setAdvertisement_Name(objMap.get("advertisement_Name").toString());
-            advertisement.setCorporation_Name(objMap.get("corporation_Name").toString());
-            advertisement.setPhoto(objMap.get("photo").toString());
-            advertisement.setDurationTime(Integer.parseInt(objMap.get("durationTime").toString()));
-            this.advertisementService.save(advertisement);
-
-        }catch (Exception e){
-
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        return ResponseEntity.ok(HttpStatus.OK);
-    }*/
-
 
     @RequestMapping(value = "/uploadfile", method = RequestMethod.POST)
     @ResponseBody
@@ -102,10 +79,6 @@ public class AdvertisementController {
         this.advertisementService.save(advertisement);
         return new ResponseEntity<>("File is uploaded successfully",HttpStatus.OK);
     }
-
-
-
-
 
     @RequestMapping(value = "/id/{id}", method = RequestMethod.DELETE)
     @ResponseBody

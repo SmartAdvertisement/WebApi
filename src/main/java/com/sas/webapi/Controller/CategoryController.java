@@ -72,14 +72,5 @@ public class CategoryController {
     }
 
 
-    @RequestMapping(value = "/{busName}", method = RequestMethod.DELETE)
-    @ResponseBody
-    public ResponseEntity deleteBusByBusName(@PathVariable String categoryName) {
-        if (!this.categoryServices.checkCategoryExistence(categoryName)) {
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        }
 
-        this.categoryServices.deleteByAdvertisementname(categoryName);
-        return new ResponseEntity(HttpStatus.OK);
-    }
 }

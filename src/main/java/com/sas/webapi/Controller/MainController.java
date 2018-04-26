@@ -4,6 +4,7 @@ import com.sas.webapi.Services.AdvertisementServices;
 import com.sas.webapi.Services.AgServices;
 
 import com.sas.webapi.Services.AppZip;
+import com.sas.webapi.Services.CategoryServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -29,6 +30,9 @@ public class MainController {
     @Autowired
     private AdvertisementServices advertisementServices;
 
+    @Autowired
+    private CategoryServices categoryServices;
+
     @PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping("/reklamListesi")
     public String advertisementList(Model model){
@@ -42,12 +46,24 @@ public class MainController {
         return "reklam-listele";
     }
     @PreAuthorize("hasAnyRole('ADMIN')")
-    @RequestMapping(value = "/kategori",method = RequestMethod.GET)
+    @RequestMapping(value = "/category",method = RequestMethod.GET)
     public String index(){return "category";}
 
     @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "/reklamEkle",method = RequestMethod.GET)
-    public String reklamEkle(){return "reklam-ekle";}
+    public String reklamEkle(Model model){
+        try{
+            model.addAttribute("category",categoryServices.getAll());
+        }catch(Exception e)
+        {
+            System.out.print(e);
+        }
+
+        return "reklam-ekle";
+
+
+
+    }
 
     @GetMapping("/login")
     public String login(){return "login";}

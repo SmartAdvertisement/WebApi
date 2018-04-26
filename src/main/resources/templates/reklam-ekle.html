@@ -22,10 +22,10 @@
                     <hr/>
                     <div class="x_content">
                         <form id="demo-form" data-parsley-validate>
-                            <label>Reklam Adı * :</label>
+                            <label>Reklam Adı*:</label>
                             <input type="text" id="advertisementName" class="form-control" name="advertisementName" required />
                             <br/>
-                            <label>Şirket Adı * :</label>
+                            <label>Şirket Adı*:</label>
                             <input type="text" id="corporationName" class="form-control" name="corporationName" data-parsley-trigger="change" required />
                             <br/>
                             <label>Cinsiyet *:</label>
@@ -39,9 +39,10 @@
                             <label>Reklam Süresi(sn):<input type="number" name="durationTime" class="form-control" id="time" min="10" max="59"  required/></label>
                             <br/>
                             <label for="categories">Reklam Kategorisi*:</label>
-                            <select id="categories" class="form-control" name="categoryName" required>
-                                <option th:each="category : ${category}" th:value="${category.id}" th:text="${category.categoryName}">Default</option>
-                                <option value="1">set</option>
+                            <select id="categories" class="form-control"  name="categoryName" required>
+
+                                <option th:each="category : ${category}" th:value="${category.id}" th:text="${category.categoryName}"></option>
+
                             </select>
                             <br/>
                             <label>Reklam Tipi *:</label>
