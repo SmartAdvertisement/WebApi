@@ -56,10 +56,10 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="category : ${category}">
-                                <td th:text="${category.id}"></td>
-                                <td th:text="${category.categoryName}"></td>
-                                <td th:text="${category.gender.getName()}"></td>
+                            <tr th:each="categoryList : ${categoryList}">
+                                <td th:text="${categoryList.id}"></td>
+                                <td th:text="${categoryList.categoryName}"></td>
+                                <td th:text="${categoryList.gender.getName()}"></td>
                             </tr>
                             </tbody>
                         </table>
