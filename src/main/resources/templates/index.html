@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Ağ Programlama</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+</head>
+
+<body class="nav-md">
+<!-- Page Heading/Breadcrumbs -->
+<h1 class="mt-4 mb-3">Ders Programı</h1>
+<script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+        crossorigin="anonymous"></script>
+
+
+<div class="container body">
+    <div class="right_col" role="main">
+        <section>
+
+            <div class="container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Sıra No</th>
+                        <th>Ders Kodu</th>
+                        <th>Ders Adı</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="ders : ${ders}">
+                        <td th:text="${ders.agID}"></td>
+                        <td th:text="${ders.dersinKodu}"></td>
+                        <td th:text="${ders.dersinAdi}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="container" id="dersAlani" style="display:none;">
+                    <div class="col-md-10 center">
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span class="badge badge-pill">Dersin Kodu</span>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="DersKod" placeholder="Ders Kodunu Girin">
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span class="badge badge-pill">Dersin Adı</span>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="DersAd" placeholder="Ders Adı Girin">
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span class="badge badge-pill">Dersin İçeriği</span>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="DersIcerik" placeholder="Ders İçeriği Girin">
+                                </div>
+                            </div>
+                        </div>
+                        <br/><br/>
+                        <div class="row">
+                            <div class="col-md-4 pull-right">
+                                <button id="Json" type="button" >JSON Göster</button>
+                            </div>
+                            <div class="col-md-4 pull-right">
+                                <button id="XML" type="button" >XML Göster</button>
+                            </div>
+                        </div>
+                        <br/> <br/>
+
+                        <div class="row">
+
+                            <label for="veri">Kodlanmış Veri:</label>
+                            <textarea class="form-control" rows="9" id="veri"></textarea>
+                        </div>
+                        <br/><br/>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+    </div>
+
+
+</div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $("table").find('tr:eq(4) td:eq(1)').attr("id","isletimSistemi")
+        console.log($("#isletimSistemi tr:eq(4) td:eq(2) "));
+        $("#isletimSistemi").click(function () {
+
+            $("#DersAd").val($("table tr:eq(4) td:eq(2) ").html());
+            $("#DersKod").val($("table tr:eq(4) td:eq(1)").html());
+            if ($('#dersAlani:visible').length === 0) {
+                $("#dersAlani").fadeIn("slow");
+            } else {
+                $("#dersAlani").fadeOut("slow");
+            }
+        });
+        $("input").keyup(function () { ajax(); });
+
+    });
+    var dersKodu = "";
+    var dersAdi = "";
+    var dersIcerigi = "";
+    var agID =4;
+
+    function ajax()  {
+     //   alert("hi");
+        if (dersKodu !== $("#DersKod").val()) {
+            dersKodu = $("#DersKod").val();
+        }
+        if (dersAdi !== $("#DersAd").val()) {
+            dersAdi = $("#DersAd").val();
+
+        }
+        if (dersIcerigi !== $("#DersIcerik").val()) {
+            dersIcerigi = $("#DersIcerik").val();
+        }
+
+        var json= {};
+        json.agID = agID;
+        json.dersin_kodu = dersKodu;
+        json.dersin_adi = dersAdi;
+        json.dersin_icerigi = dersIcerigi;
+        $.ajax({
+            url: "/agProgramlama/add",
+            type: "POST",
+            dataType:'JSON',
+            data: JSON.stringify(json),
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+
+        })
+    }
+    function objectToXml(obj) {
+        var xml = '';
+
+        for (var prop in obj) {
+            if (!obj.hasOwnProperty(prop)) {
+                continue;
+            }
+
+            if (obj[prop] == undefined)
+                continue;
+
+            xml += "<" + prop + ">";
+            if (typeof obj[prop] == "object")
+                xml += objectToXml(new Object(obj[prop]));
+            else
+                xml += obj[prop];
+
+            xml += "<!--" + prop + "-->";
+        }
+
+        return xml;
+    }
+    $("#Json").click(function(){
+        //alert("hi");
+        $.ajax({
+            url: "/agProgramlama/getAll",
+            type: "GET",
+            dataType:'JSON',
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                $("#veri").val(JSON.stringify(response));
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+
+        })
+    });
+    $("#XML").click(function(){
+        $.ajax({
+            url: "/agProgramlama/getAll",
+            type: "GET",
+            dataType:'JSON',
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                $("#veri").val(objectToXml(response));
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+
+        })
+    });
+</script>
+
+</body>
+</html>

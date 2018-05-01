@@ -65,7 +65,10 @@ public class AdvertisementController {
                                         @RequestParam("categoryName") String categoryName)throws IOException{
         Advertisement advertisement = new Advertisement();
         AdvertisementCategory category;
-        File convertFile = new File("C:\\uploaded-files\\"+file.getOriginalFilename());
+        AdvertisementCategory category1;
+        category = categoryServices.getById(Integer.parseInt(categoryName));
+
+        File convertFile = new File("C:\\uploaded-files\\"+category.getCategoryName()+"\\"+category.getGender().getName()+"\\"+file.getOriginalFilename());
         if(type.equals("video")){
             advertisement.setVideo(convertFile.getPath());
         }else if(type.equals("photo")){
@@ -76,7 +79,8 @@ public class AdvertisementController {
         fout.write(file.getBytes());
         fout.close();
 
-        category = categoryServices.getById(Integer.parseInt(categoryName));
+
+        //category1=categoryServices.getById(Integer.parseInt());
         advertisement.setAdvertisement_Name(advertisementName);
         advertisement.setDurationTime(Integer.parseInt(durationTime));
         advertisement.setCorporation_Name(corporationName);
@@ -86,7 +90,7 @@ public class AdvertisementController {
 
         //Eğer save'de sıkıntı oluşmadıysa alt kısım çalışır
         //Version değeri arttırılır.
-        playlistService.increaseVersion();
+      //  playlistService.increaseVersion();
         return new ResponseEntity<>("File is uploaded successfully",HttpStatus.OK);
     }
 
