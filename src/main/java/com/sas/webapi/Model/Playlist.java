@@ -15,7 +15,7 @@ public class Playlist {
     @Column(name="Version")
     private int version;
 
-    @Column(name="ActiveStatus")
+    @Column(name="activestatus")
     private boolean activeStatus;
 
     @Column(name="created_at")
@@ -25,7 +25,7 @@ public class Playlist {
     private Date updated_at;
 
     @ManyToOne
-    @JoinColumn(name="deviceId")
+    @JoinColumn(name="deviceid")
     private Device device;
 
     public Playlist() {

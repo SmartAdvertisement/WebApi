@@ -9,7 +9,7 @@ public class PlaylistService {
 
     @Autowired
     private PlaylistRepository playlistRepository;
-
+/*
     public boolean checkVersion(int versionId){
 
         return this.playlistRepository.checkVersion(versionId);
@@ -24,4 +24,5 @@ public class PlaylistService {
     public void increaseVersion(){
         this.playlistRepository.increaseVersion();
     }
+    */
 }

@@ -98,7 +98,7 @@ public class AdvertisementController {
 
 
 
-    @RequestMapping(value = "/id/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public ResponseEntity deleteById(@PathVariable int id){
         try{
@@ -106,7 +106,6 @@ public class AdvertisementController {
                 return new ResponseEntity(HttpStatus.BAD_REQUEST);
             }
             this.advertisementService.deleteById(id);
-            //int userId = new ObjectMapper().readValue(id);
         }catch(Exception e){
             System.out.print(e);
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);

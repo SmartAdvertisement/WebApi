@@ -39,6 +39,9 @@ public class Advertisement {
     @Column(name="updated_at")
     private Date updated_at;
 
+    @Column(name="activestatus")
+    private boolean activeStatus;
+
     @ManyToOne
     @JoinColumn(name="categoryID")
     private AdvertisementCategory advertisementCategory;
@@ -139,5 +142,11 @@ public class Advertisement {
         this.advertisementCategory = advertisementCategory;
     }
 
+    public boolean isActiveStatus() {
+        return activeStatus;
+    }
 
+    public void setActiveStatus(boolean activeStatus) {
+        this.activeStatus = activeStatus;
+    }
 }

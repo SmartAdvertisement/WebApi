@@ -27,6 +27,10 @@ public class AdvertisementServices {
         return this.advertisementRepository.checkAdvertisementExistence(advertisementName) != null;
     }
 
+    public Advertisement getAllIfActivestatusTrue(){
+        return this.advertisementRepository.getAllIfActiveStatusTrue();
+    }
+
     public Advertisement getByAdvertisementName(String advertisement_Name) {
         return this.advertisementRepository.findAdByAdvertisementName(advertisement_Name);
     }
@@ -36,7 +40,7 @@ public class AdvertisementServices {
     }
 
     public void deleteById(int id) {
-        this.advertisementRepository.deleteById(id);
+        this.advertisementRepository.deleteAdvertisement(id);
     }
 
     public void deleteByAdvertisementName(String advertisementName) {

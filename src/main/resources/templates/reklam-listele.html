@@ -41,6 +41,7 @@
                               <td th:text="${advertisement.advertisement_Name}"></td>
                               <td> <img th:src="${advertisement.photo}" height="100" width="100"/></td>
                               <td th:text="${advertisement.created_at}"></td>
+                              <td><button type="button" class="btn btn-danger" th:id="${advertisement.id}" onclick="deleteAdv(this.id)">SİL</button></td>
                           </tr>
                           </tbody>
                       </table>
@@ -64,6 +65,26 @@
 <div th:replace="LayoutDefault::js"></div>
 
 <script>
+
+    function deleteAdv(id){
+        $.ajax({
+            url: "/advertisement/delete/"+id,
+            method: "DELETE",
+            dataType:'json',
+            success: function (response) {
+                console.log(response);
+                alert("Silme işlemi başarılı.");
+                window.location.href="/";
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+
+        });
+    }
+
+
     $("input:checkbox").on('click', function() {
         var $box = $(this);
         if ($box.is(":checked")) {

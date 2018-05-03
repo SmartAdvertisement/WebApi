@@ -27,8 +27,7 @@ public class PlaylistController {
     @Autowired
     private PlaylistService playlistService;
 
-    // http://localhost:8080/download3?fileName=abc.zip
-    // Using HttpServletResponse
+
     @GetMapping("/downloadFile")
     public void downloadFile3(HttpServletResponse resonse,
                               @RequestParam(defaultValue = DEFAULT_FILE_NAME) String fileName) throws IOException {
@@ -69,22 +68,22 @@ public class PlaylistController {
 
     }
 
-
+/*
     @ResponseBody
     @PostMapping("checkVersion")
     public int checkVersion(@RequestBody String json){
         try{
             Playlist playlist = new ObjectMapper().readValue(json,Playlist.class);
-           if(playlist.getVersion()==playlistService.getVersion()){
-               return 0;
-           }else{
-               return playlistService.getVersion();
-           }
+            if(playlist.getVersion()==playlistService.getVersion()){
+                return 0;
+            }else{
+                return playlistService.getVersion();
+            }
 
         }catch (Exception e){
             System.out.print(e);
             return -1;
         }
     }
-
+*/
 }
