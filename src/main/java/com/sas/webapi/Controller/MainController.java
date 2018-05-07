@@ -68,13 +68,14 @@ public class MainController {
         }
 
         return "reklam-ekle";
-
-
-
     }
 
     @GetMapping("/login")
     public String login(){return "login";}
+
+
+    @GetMapping("/chat")
+    public String chat(){return "chat";}
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
