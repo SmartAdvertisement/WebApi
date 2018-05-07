@@ -16,9 +16,9 @@ public class AdvertisementCategory {
     @JoinColumn(name="genderID")
     private Gender gender;
     @Column(name = "maxAge")
-    private Integer maxAge;
+    private Integer maxage;
     @Column(name = "minAge")
-    private Integer minAge;
+    private Integer minage;
 
 
     /** get and set **/
@@ -49,19 +49,19 @@ public class AdvertisementCategory {
     }
 
 
-    public Integer getMaxAge() {
-        return maxAge;
+    public Integer getMaxage() {
+        return maxage;
     }
 
-    public void setMaxAge(Integer maxAge) {
-        this.maxAge = maxAge;
+    public void setMaxage(Integer maxage) {
+        this.maxage = maxage;
     }
 
-    public Integer getMinAge() {
-        return minAge;
+    public Integer getMinage() {
+        return minage;
     }
 
-    public void setMinAge(Integer minAge) {
-        this.minAge = minAge;
+    public void setMinage(Integer minage) {
+        this.minage = minage;
     }
 }

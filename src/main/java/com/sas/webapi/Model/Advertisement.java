@@ -40,7 +40,7 @@ public class Advertisement {
     private Date updated_at;
 
     @Column(name="activestatus")
-    private boolean activeStatus;
+    private boolean activestatus;
 
     @ManyToOne
     @JoinColumn(name="categoryID")
@@ -68,6 +68,7 @@ public class Advertisement {
         this.durationTime=advertisement.getDurationTime();
         this.photo=advertisement.getPhoto();
         this.video=advertisement.getVideo();
+        this.activestatus=advertisement.isActivestatus();
     }
     /** get and set **/
 
@@ -142,11 +143,11 @@ public class Advertisement {
         this.advertisementCategory = advertisementCategory;
     }
 
-    public boolean isActiveStatus() {
-        return activeStatus;
+    public boolean isActivestatus() {
+        return activestatus;
     }
 
-    public void setActiveStatus(boolean activeStatus) {
-        this.activeStatus = activeStatus;
+    public void setActivestatus(boolean activestatus) {
+        this.activestatus = activestatus;
     }
 }

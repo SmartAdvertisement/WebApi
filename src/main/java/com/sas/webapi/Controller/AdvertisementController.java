@@ -68,7 +68,7 @@ public class AdvertisementController {
         AdvertisementCategory category1;
         category = categoryServices.getById(Integer.parseInt(categoryName));
 
-        File convertFile = new File("C:\\uploaded-files\\"+category.getCategoryName()+"\\"+category.getGender().getName()+"\\"+file.getOriginalFilename());
+        File convertFile = new File("C:\\uploaded-files\\"+category.getGender().getName()+"\\"+category.getCategoryName()+"\\"+file.getOriginalFilename());
         if(type.equals("video")){
             advertisement.setVideo(convertFile.getPath());
         }else if(type.equals("photo")){
@@ -85,6 +85,7 @@ public class AdvertisementController {
         advertisement.setDurationTime(Integer.parseInt(durationTime));
         advertisement.setCorporation_Name(corporationName);
         advertisement.setAdvertisementCategory(category);
+        advertisement.setActivestatus(true);
         this.advertisementService.save(advertisement);
 
 
