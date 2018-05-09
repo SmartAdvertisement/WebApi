@@ -63,35 +63,40 @@ public class AdvertisementController {
                                         @RequestParam("type") String type,
                                         @RequestParam("durationTime") String durationTime,
                                         @RequestParam("categoryName") String categoryName)throws IOException{
-        Advertisement advertisement = new Advertisement();
-        AdvertisementCategory category;
-        AdvertisementCategory category1;
-        category = categoryServices.getById(Integer.parseInt(categoryName));
+        try{
+            Advertisement advertisement = new Advertisement();
+            AdvertisementCategory category;
+            AdvertisementCategory category1;
+            category = categoryServices.getById(Integer.parseInt(categoryName));
 
-        File convertFile = new File("C:\\uploaded-files\\"+category.getGender().getName()+"\\"+category.getCategoryName()+"\\"+file.getOriginalFilename());
-        if(type.equals("video")){
-            advertisement.setVideo(convertFile.getPath());
-        }else if(type.equals("photo")){
-            advertisement.setPhoto(convertFile.getPath());
+            File convertFile = new File("C:\\uploaded-files\\"+category.getGender().getName()+"\\"+category.getCategoryName()+"\\"+file.getOriginalFilename());
+            if(type.equals("video")){
+                advertisement.setVideo(convertFile.getPath());
+            }else if(type.equals("photo")){
+                advertisement.setPhoto(convertFile.getPath());
+            }
+            convertFile.createNewFile();
+            FileOutputStream fout = new FileOutputStream(convertFile);
+            fout.write(file.getBytes());
+            fout.close();
+
+
+            //category1=categoryServices.getById(Integer.parseInt());
+            advertisement.setAdvertisement_Name(advertisementName);
+            advertisement.setDurationTime(Integer.parseInt(durationTime));
+            advertisement.setCorporation_Name(corporationName);
+            advertisement.setAdvertisementCategory(category);
+            advertisement.setActivestatus(true);
+            this.advertisementService.save(advertisement);
+
+
+            //Eğer save'de sıkıntı oluşmadıysa alt kısım çalışır
+            //Version değeri arttırılır.
+            //  playlistService.increaseVersion();
         }
-        convertFile.createNewFile();
-        FileOutputStream fout = new FileOutputStream(convertFile);
-        fout.write(file.getBytes());
-        fout.close();
-
-
-        //category1=categoryServices.getById(Integer.parseInt());
-        advertisement.setAdvertisement_Name(advertisementName);
-        advertisement.setDurationTime(Integer.parseInt(durationTime));
-        advertisement.setCorporation_Name(corporationName);
-        advertisement.setAdvertisementCategory(category);
-        advertisement.setActivestatus(true);
-        this.advertisementService.save(advertisement);
-
-
-        //Eğer save'de sıkıntı oluşmadıysa alt kısım çalışır
-        //Version değeri arttırılır.
-      //  playlistService.increaseVersion();
+       catch (Exception e){
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+       }
         return new ResponseEntity<>("File is uploaded successfully",HttpStatus.OK);
     }
 

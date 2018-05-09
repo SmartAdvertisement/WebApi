@@ -32,8 +32,7 @@
                             <p>
                                 Erkek:
                                 <input type="radio" class="flat" name="gender" id="erkek" value="1" checked="" required /> Kadın:
-                                <input type="radio" class="flat" name="gender" id="kadin" value="2" />Çoçuk:
-                                <input type="radio" class="flat" name="gender" id="cocuk" value="3" />
+                                <input type="radio" class="flat" name="gender" id="kadin" value="2" />
                             </p>
                             <br/>
                             <label>Reklam Süresi(sn):<input type="number" name="durationTime" class="form-control" id="time" min="10" max="59"  required/></label>
@@ -124,10 +123,10 @@
             contentType: false,
             cache: false,
             success: function (response) {
-                alert("başarılı");
+                alert("başarılı!");
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                console.log(textStatus, errorThrown);
+               alert("başarılı!");
             }
         })
     });

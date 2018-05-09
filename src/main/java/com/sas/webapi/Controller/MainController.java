@@ -36,7 +36,7 @@ public class MainController {
     @GetMapping("/reklamListesi")
     public String advertisementList(Model model){
         try{
-            model.addAttribute("advertisement",advertisementServices.getAll());
+            model.addAttribute("advertisement",advertisementServices.getAllIfActivestatusTrue());
         }catch(Exception e)
         {
             System.out.print(e);

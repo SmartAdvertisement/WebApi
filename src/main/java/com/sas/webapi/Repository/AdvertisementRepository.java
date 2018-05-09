@@ -23,7 +23,7 @@ public interface AdvertisementRepository extends JpaRepository<Advertisement,Int
     @Query("SELECT 1 FROM Advertisement u WHERE u.advertisement_Name= :advertisementName")
     Integer checkAdvertisementExistence(@Param("advertisementName") String advertisementName);
 
-    @Query("SELECT u FROM Advertisement u WHERE u.activestatus=1")
+    @Query("SELECT u FROM Advertisement u WHERE u.activestatus= 1")
     Advertisement getAllIfActiveStatusTrue();
 
     @Transactional
