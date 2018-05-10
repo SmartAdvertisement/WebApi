@@ -27,7 +27,7 @@ public class AdvertisementServices {
         return this.advertisementRepository.checkAdvertisementExistence(advertisementName) != null;
     }
 
-    public Advertisement getAllIfActivestatusTrue(){
+    public List<Advertisement> getAllIfActivestatusTrue(){
         return this.advertisementRepository.getAllIfActiveStatusTrue();
     }
 

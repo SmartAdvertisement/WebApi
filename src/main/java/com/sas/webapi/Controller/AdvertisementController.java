@@ -55,6 +55,7 @@ public class AdvertisementController {
 
 
 
+
     @RequestMapping(value = "/uploadfile", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<?> uploadFile(@RequestParam("uploadFile") MultipartFile file,
